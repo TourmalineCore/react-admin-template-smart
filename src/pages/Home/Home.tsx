@@ -1,10 +1,19 @@
 /* eslint-disable @typescript-eslint/no-shadow */
-import { useState } from 'react';
+import { observer } from 'mobx-react-lite';
+import { useContext, useState } from 'react';
+import { useErrorHandler } from 'react-error-boundary';
 import reactLogo from '../../assets/react.svg';
+import ErrorContext from '../../components/Error Boundaries/ErrorContext';
+import Name from '../../components/Name';
 import './Home.scss';
 
 function Home() {
   const [count, setCount] = useState(0);
+
+  const { error, handlerError } = useContext(ErrorContext);
+
+  const handler = useErrorHandler();
+  console.log('error', error);
 
   return (
     <div className="App">
@@ -17,8 +26,16 @@ function Home() {
         </a>
       </div>
       <h1>Vite + React</h1>
+      <Name />
       <div className="card">
-        <button type="button" onClick={() => setCount((count: number) => count + 1)}>
+        <button
+          type="button"
+          onClick={() => {
+            setCount((count: number) => count + 1);
+            handlerError(`re ${count + 1}`);
+            handler(`re ${count + 1}`);
+          }}
+        >
           count is
           {' '}
           {count}
@@ -38,4 +55,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default observer(Home);
