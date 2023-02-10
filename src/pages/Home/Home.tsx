@@ -4,6 +4,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import ErrorComponent from '../../components/ErrorComponent';
 import Name from '../../components/Name';
 import './Home.scss';
+import Indicators from '../../components/Indicators/Indicators';
 
 function Home() {
   return (
@@ -12,6 +13,11 @@ function Home() {
         FallbackComponent={ErrorComponent}
       >
         <Name />
+      </ErrorBoundary>
+      <ErrorBoundary
+        FallbackComponent={ErrorComponent}
+      >
+        <Indicators />
       </ErrorBoundary>
       <div>Hello</div>
     </div>
