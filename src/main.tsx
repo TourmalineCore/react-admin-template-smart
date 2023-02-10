@@ -1,19 +1,22 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { ErrorBoundary } from 'react-error-boundary';
 import { App } from './App';
-import ErrorContextProvider from './components/Error Boundaries/ErrorContextProvider';
-import ErrorHandler from './components/Error Boundaries/ErrorHandler';
+
 import './index.scss';
+import 'react-loading-skeleton/dist/skeleton.css';
+
+import ErrorComponent from './components/ErrorComponent';
+
+const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <ErrorContextProvider>
-      <ErrorHandler>
-        <ErrorBoundary fallback={<div>Error</div>}>
-          <App />
-        </ErrorBoundary>
-      </ErrorHandler>
-    </ErrorContextProvider>
+    <QueryClientProvider client={queryClient}>
+      <ErrorBoundary FallbackComponent={ErrorComponent}>
+        <App />
+      </ErrorBoundary>
+    </QueryClientProvider>
   </React.StrictMode>,
 );
