@@ -131,3 +131,15 @@ button:focus-visible {
   text-align: center;
   color: #f00;
 }
+
+// table
+
+table {
+  width: 100%;
+}
+
+th,
+td {
+  padding-right: 10px;
+  font-weight: unset;
+}

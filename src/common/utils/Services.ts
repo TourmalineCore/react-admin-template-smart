@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { ITable } from '../../components/Table/types';
 
 interface IName {
   name: string;
@@ -29,5 +30,11 @@ export const Service = {
   },
   async getAggregatedData(id: string | null) {
     return axios.get<IAggregatedData[]>(`https://jsonplaceholder.typicode.com/comments?postId=${id}`);
+  },
+  async getTableData() {
+    return axios.get<ITable[]>('https://jsonplaceholder.typicode.com/users');
+  },
+  async getSpecificData() {
+    return axios.get<ITable[]>('https://jsonplaceholder.typicode.com/users');
   },
 };
