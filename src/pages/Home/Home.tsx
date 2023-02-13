@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import { observer } from 'mobx-react-lite';
 import { ErrorBoundary } from 'react-error-boundary';
-import ErrorComponent from '../../components/ErrorComponent';
-import Name from '../../components/Name';
+import ErrorComponent from '../../components/ErrorComponent/ErrorComponent';
+import Name from '../../components/Name/Name';
 import './Home.scss';
 import Indicators from '../../components/Indicators/Indicators';
 
@@ -19,7 +19,6 @@ function Home() {
       >
         <Indicators />
       </ErrorBoundary>
-      <div>Hello</div>
     </div>
   );
 }

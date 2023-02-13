@@ -3,7 +3,7 @@ import React from 'react';
 import { useErrorHandler } from 'react-error-boundary';
 import Skeleton from 'react-loading-skeleton';
 import { useSearchParams } from 'react-router-dom';
-import { Service } from '../common/utils/Services';
+import { Service } from '../../common/utils/Services';
 
 function Name() {
   const [params] = useSearchParams();
@@ -15,19 +15,14 @@ function Name() {
     queryFn: () => Service.getName(id),
   });
 
-  if (error) {
-    useErrorHandler(error);
-  }
+  useErrorHandler(error);
 
   return (
-    <>
-      <div>
-        { response?.data.name}
-        {' '}
-        {isLoading && (<Skeleton />)}
-      </div>
-      <div className="card" />
-    </>
+    <div className="section name">
+      { response?.data.name}
+      {' '}
+      {isLoading && (<Skeleton />)}
+    </div>
 
   );
 }

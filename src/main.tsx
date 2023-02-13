@@ -7,7 +7,7 @@ import { App } from './App';
 import './index.scss';
 import 'react-loading-skeleton/dist/skeleton.css';
 
-import ErrorComponent from './components/ErrorComponent';
+import ErrorComponent from './components/ErrorComponent/ErrorComponent';
 
 const queryClient = new QueryClient();
 
