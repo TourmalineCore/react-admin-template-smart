@@ -1,26 +1,24 @@
-import { useSearchParams } from 'react-router-dom';
+import { observer } from 'mobx-react-lite';
+import { useContext } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import customErrorBoundary from '../../../../common/error-handling/errorBoundary';
+import NameStateContext from './NameStateContext';
 
-import { useGet } from '../../../../common/hooks/useGet';
+import { useNameLoader } from './useNameLoader';
 
 function Name() {
-  const [params] = useSearchParams();
-  const id = params.get('id');
+  useNameLoader();
 
-  const { isLoading, data } = useGet({
-    url: `users/${id}`,
-    errorMessage: 'Error get name',
-  });
+  const nameState = useContext(NameStateContext);
 
   return (
     <div className="section name">
-      {data?.name}
+      {nameState.name}
       {' '}
-      {isLoading && (<Skeleton />)}
+      {nameState.isLoading && (<Skeleton />)}
     </div>
 
   );
 }
 
-export default customErrorBoundary(Name);
+export default customErrorBoundary(observer(Name));
