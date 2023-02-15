@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 import { ErrorBoundary, useErrorHandler } from 'react-error-boundary';
-import { Service } from '../../common/utils/Services';
-import ErrorComponent from '../ErrorComponent/ErrorComponent';
+import { Service } from '../../../../common/utils/Services';
+import ErrorComponent from '../../../../components/ErrorComponent/ErrorComponent';
 import SkeletonTableRow from './components/SkeletonTableRow/SkeletonTableRow';
 import SpecificComponent from './components/SpecificComponent/SpecificComponent';
 import { ITable } from './types';

@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { useErrorHandler } from 'react-error-boundary';
 import Skeleton from 'react-loading-skeleton';
-import { Service } from '../../../../common/utils/Services';
+import { Service } from '../../../../../../common/utils/Services';
 
 function SpecificComponent({
   index,
@@ -18,7 +18,6 @@ function SpecificComponent({
   return (
     <span>
       {isLoading && <Skeleton />}
-
       {response?.data[index].phone}
     </span>
   );

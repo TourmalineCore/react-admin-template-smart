@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import { ITable } from '../../components/Table/types';
 
 interface IName {
@@ -31,7 +32,9 @@ interface IAggregatedData {
 
 export const Service = {
   async getName(id: string | null) {
-    return axios.get<IName>(`https://jsonplaceholder.typicode.com/users/${id}`);
+    return axios.get<IName>(`https://jsonplaceholder.typicode.com/users/${id}`)
+      .then((response) => response.data.name)
+      .catch((err) => { throw new Error('Test we', { cause: err }); });
   },
   async getProjects(id: string | null) {
     return axios.get<IProject[]>(`https://jsonplaceholder.typicode.com/comments?postId=${id}`);

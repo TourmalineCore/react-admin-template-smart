@@ -2,7 +2,8 @@ import { useQuery } from '@tanstack/react-query';
 import { useErrorHandler } from 'react-error-boundary';
 import Skeleton from 'react-loading-skeleton';
 import { useSearchParams } from 'react-router-dom';
-import { Service } from '../../../../common/utils/Services';
+import customErrorBoundary from '../../../../../../common/error-handling/errorBoundary';
+import { Service } from '../../../../../../common/utils/Services';
 
 function Aggregation() {
   const [params] = useSearchParams();
@@ -32,4 +33,4 @@ function Aggregation() {
   );
 }
 
-export default Aggregation;
+export default customErrorBoundary(Aggregation);
