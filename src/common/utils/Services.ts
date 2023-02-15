@@ -21,6 +21,14 @@ interface IAggregatedData {
   body: string;
 }
 
+interface IAggregatedData {
+  postId: number;
+  id: number;
+  name: string;
+  email: string;
+  body: string;
+}
+
 export const Service = {
   async getName(id: string | null) {
     return axios.get<IName>(`https://jsonplaceholder.typicode.com/users/${id}`);
