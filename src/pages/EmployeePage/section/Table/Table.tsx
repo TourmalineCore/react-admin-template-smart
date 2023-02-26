@@ -21,13 +21,13 @@ function Table() {
   useErrorHandler(error);
 
   return (
-    <table className="section">
+    <table className="section table">
       <thead>
-        <tr className="row100 head">
-          <th className="cell100 column2">Position</th>
-          <th className="cell100 column3">Start date</th>
-          <th className="cell100 column4">Last Activity</th>
-          <th className="cell100 column5">Contacts</th>
+        <tr className="head">
+          <th className="column2">Position</th>
+          <th className="column3">Start date</th>
+          <th className="column4">Last Activity</th>
+          <th className="column5">Contacts</th>
         </tr>
       </thead>
 
@@ -43,17 +43,17 @@ function Table() {
           </>
         )}
         {dataTable.map((item, index) => (
-          <tr className="row100 body" key={item.id}>
-            <td className="cell100 column2">{item.name}</td>
-            <td className="cell100 column3">
+          <tr className="table-row" key={item.id}>
+            <td className="column2">{item.name}</td>
+            <td className="column3">
 
               <ErrorBoundary FallbackComponent={ErrorComponent}>
                 <SpecificComponent index={index} />
               </ErrorBoundary>
 
             </td>
-            <td className="cell100 column4">{item.email}</td>
-            <td className="cell100 column5">{item.website}</td>
+            <td className="column4">{item.email}</td>
+            <td className="column5">{item.website}</td>
           </tr>
         ))}
       </tbody>
