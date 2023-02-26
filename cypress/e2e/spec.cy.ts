@@ -20,25 +20,20 @@ describe('Test name is loaded correctly', () => {
     cy.wait(5000)
     cy.get('.table .table-row:first-child .column2').should('have.text', 'Leanne Graham')
   })
-
-  it.skip('get error', () => {
-    cy.visit(`http://127.0.0.1:5173/?id=${id}`)
-  })
 })
 
-// describe('Test error boundary is shown when request for name fails', () => {
-//   let id = 2000000; 
-//   let incorrectURL = 'https://jsonplaceholder.typicode.com/users';
+describe('Test error boundary is shown when request for name fails', () => {
+  let id = 2; 
+  let incorrectURL = 'https://jsonplaceholder.typicode.com/users';
 
-//   it('shows error boundary for name section', () => {
-//     cy.visit(`http://127.0.0.1:5173/?id=${id}`)
+  it('shows error boundary for name section', () => {
+    cy.visit(`http://127.0.0.1:5173/?id=${id}`)
 
-//     cy.request({
-//       url: `${incorrectURL}/${id}`,
-//     }).then((resp) => {
-//       expect(resp.status).to.eq(404)
-//     })
+    cy.intercept(`${incorrectURL}/${id}`, {
+      statusCode: 404,
+      body: '404 Not Found!',
+    })
 
-//     cy.get('.error-component')
-//   })
-// })
+    cy.get('.error-component')
+  })
+})

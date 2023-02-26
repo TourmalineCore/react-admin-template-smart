@@ -11,7 +11,7 @@ export const useGet = <Type = any>({
 }:{
   url: string;
   config?:AxiosRequestConfig<Type>,
-  errorMessage?: string;
+  errorMessage: string;
 }) => {
   const { isLoading, data, error } = useQuery({
     queryKey: ['name'],
