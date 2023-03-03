@@ -1,26 +1,26 @@
 import { useQuery } from '@tanstack/react-query';
 import { AxiosRequestConfig } from 'axios';
 import { useErrorHandler } from 'react-error-boundary';
-
 import { api } from '../utils/HttpClient';
+
+// import { api } from '../utils/HttpClient';
 
 export const useGet = <Type = any>({
   url,
   config,
-  errorMessage = 'Error',
 }:{
   url: string;
   config?:AxiosRequestConfig<Type>,
-  errorMessage: string;
 }) => {
-  const { isLoading, data, error } = useQuery({
+  const handler = useErrorHandler();
+
+  const { isLoading, data: response } = useQuery({
     queryKey: ['name'],
+    retry: false,
     queryFn: () => api.get<Type>(url, config)
-      .then((response) => response.data)
-      .catch((err) => { throw new Error(errorMessage, { cause: err }); }),
+      .then((res) => res.data)
+      .catch((e) => handler(e)),
   });
 
-  useErrorHandler(error);
-
-  return { isLoading, data };
+  return { isLoading, response };
 };

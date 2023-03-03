@@ -9,13 +9,10 @@ export const useNameLoader = () => {
 
   const nameState = useContext(NameStateContext);
 
-  const { isLoading, data } = useGet({
+  const { isLoading, response } = useGet<{ name: string }>({
     url: `users/${id}`,
-    errorMessage: 'Error get name',
   });
 
-  nameState.setName(data?.name);
+  nameState.setName(response?.name as string);
   nameState.setIsLoading(isLoading);
-
-  return { isLoading, data };
 };
