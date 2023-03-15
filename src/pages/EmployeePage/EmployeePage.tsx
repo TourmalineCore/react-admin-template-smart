@@ -10,11 +10,14 @@ import Table from './section/Table/Table';
 import Name from './section/Name/Name';
 import NameState from './section/Name/NameState';
 import NameStateContext from './section/Name/NameStateContext';
+import NewErrorBoundary from '../../common/error-handling/NewErrorBoundary';
 // import ErrorComponent from '../../components/ErrorComponent/ErrorComponent';
 // import Greeting from './section/Name/TestCom';
 
 function EmployeePage() {
   const nameState = useMemo(() => new NameState(), []);
+
+  console.log(process.env.NODE_ENV);
 
   return (
     <NameStateContext.Provider value={nameState}>
@@ -29,7 +32,9 @@ function EmployeePage() {
         >
           <Greeting />
         </ErrorBoundary> */}
-        <Name />
+        <NewErrorBoundary>
+          <Name />
+        </NewErrorBoundary>
         <h2>Indicators</h2>
         <Indicators />
         <h2>Table</h2>

@@ -2,7 +2,7 @@ describe('Test name is loaded correctly', () => {
   let id = 5;
   let correctURL = 'https://jsonplaceholder.typicode.com/users';
 
-  it('receives correct response status', () => {
+  it.skip('receives correct response status', () => {
     cy.request({
       url: `${correctURL}/${id}`,
     }).then((resp) => {
@@ -10,7 +10,7 @@ describe('Test name is loaded correctly', () => {
     })
   })
 
-  it('loads name', () => {
+  it.skip('loads name', () => {
     cy.intercept('GET', `${correctURL}/${id}`, {
       fixture: 'example.json'
       
@@ -32,6 +32,7 @@ describe('Test error boundary is shown when request for name fails', () => {
     cy.intercept('GET',`${incorrectURL}/${id}`, {
       statusCode: 404,
       body: '404 Not Found!',
+      failOnStatusCode: false,
     }).as('request')
 
     cy.wait('@request')

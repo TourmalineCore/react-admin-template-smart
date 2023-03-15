@@ -5,7 +5,7 @@ function ErrorComponent({
   error,
   resetErrorBoundary,
 }:{
-  error: AxiosError;
+  error: AxiosError | unknown;
   resetErrorBoundary: (...args: Array<unknown>) => void;
 }) {
   console.log('dsfsf', error);
@@ -13,7 +13,7 @@ function ErrorComponent({
   const [errorMes, setErrorMes] = useState('');
 
   useEffect(() => {
-    if (error.response?.status === 404) {
+    if ((error as AxiosError).response?.status === 404) {
       setErrorMes('You have problems with name request');
     } else {
       setErrorMes('You have problems with internet');
