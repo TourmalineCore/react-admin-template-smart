@@ -11,7 +11,7 @@ import ErrorComponent from './components/ErrorComponent/ErrorComponent';
 
 const queryClient = new QueryClient();
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById(`root`) as HTMLElement).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <ErrorBoundary FallbackComponent={ErrorComponent}>

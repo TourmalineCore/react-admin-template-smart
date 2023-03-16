@@ -11,7 +11,7 @@ function Table() {
   const [dataTable, setDataTable] = useState<ITable[]>([]);
 
   const { isLoading, error } = useQuery({
-    queryKey: ['table'],
+    queryKey: [`table`],
     queryFn: () => Service.getTableData(),
     onSuccess: ({ data }) => {
       setDataTable(data);
@@ -43,7 +43,10 @@ function Table() {
           </>
         )}
         {dataTable.map((item, index) => (
-          <tr className="table-row" key={item.id}>
+          <tr
+            className="table-row"
+            key={item.id}
+          >
             <td className="column2">{item.name}</td>
             <td className="column3">
 

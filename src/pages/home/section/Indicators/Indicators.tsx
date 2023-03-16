@@ -1,4 +1,4 @@
-import customErrorBoundary from '../../../../common/error-handling/errorBoundary';
+import withErrorBoundary from '../../../../common/HOC/withErrorBoundary';
 import Aggregation from './components/Aggregation/Aggregation';
 import Metrics from './components/Metrics/Metrics';
 
@@ -11,4 +11,4 @@ function Indicators() {
   );
 }
 
-export default customErrorBoundary(Indicators);
+export default withErrorBoundary(Indicators);

@@ -4,26 +4,29 @@ import { useEffect, useState } from 'react';
 function ErrorComponent({
   error,
   resetErrorBoundary,
-}:{
+}: {
   error: AxiosError | unknown;
   resetErrorBoundary: (...args: Array<unknown>) => void;
 }) {
-  console.log('dsfsf', error);
-
-  const [errorMes, setErrorMes] = useState('');
+  const [errorMes, setErrorMes] = useState(``);
 
   useEffect(() => {
     if ((error as AxiosError).response?.status === 404) {
-      setErrorMes('You have problems with name request');
+      setErrorMes(`You have problems with name request`);
     } else {
-      setErrorMes('You have problems with internet');
+      setErrorMes(`You have problems with internet`);
     }
   }, []);
 
   return (
     <div className="section error-component">
       {errorMes}
-      <button type="button" onClick={() => resetErrorBoundary()}>Try again</button>
+      <button
+        type="button"
+        onClick={() => resetErrorBoundary()}
+      >
+        Try again
+      </button>
     </div>
   );
 }

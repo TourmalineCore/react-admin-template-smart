@@ -1,21 +1,16 @@
 import axios from 'axios';
 import { observer } from 'mobx-react-lite';
 import { useContext, useEffect, useState } from 'react';
-import { useErrorHandler } from 'react-error-boundary';
-// import { useContext } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import { useSearchParams } from 'react-router-dom';
-import customErrorBoundary from '../../../../common/error-handling/errorBoundary';
+import withErrorBoundary from '../../../../common/HOC/withErrorBoundary';
 import NameStateContext from './NameStateContext';
-// import NameStateContext from './NameStateContext';
-
-// import { useNameLoader } from './useNameLoader';
 
 function Name() {
   const [params] = useSearchParams();
-  const id = params.get('id');
+  const id = params.get(`id`);
 
-  const [name, setName] = useState('');
+  const [name, setName] = useState(``);
 
   useEffect(() => {
     // @ts-ignore
@@ -27,20 +22,14 @@ function Name() {
 
   const nameState = useContext(NameStateContext);
 
-  console.log('render useGet ', name);
-
   return (
     <div className="section name">
       {nameState.name as string}
       {name}
-      {' '}
+      {` `}
       {nameState.isLoading && (<Skeleton />)}
     </div>
   );
-
-  async function testR() {
-
-  }
 }
 
-export default customErrorBoundary(observer(Name));
+export default withErrorBoundary(observer(Name));

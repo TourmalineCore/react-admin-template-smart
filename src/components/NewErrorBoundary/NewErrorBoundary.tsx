@@ -1,14 +1,21 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component } from 'react';
+import { Component, ErrorInfo, ReactNode } from 'react';
 
-class NewErrorBoundary extends Component {
+type Props = {
+  children: ReactNode;
+};
+
+type State = {
+  hasError: boolean;
+};
+
+class NewErrorBoundary extends Component<Props, State> {
   static getDerivedStateFromError() {
     return {
       hasError: true,
     };
   }
 
-  constructor(props: any) {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -16,18 +23,15 @@ class NewErrorBoundary extends Component {
     };
   }
 
-  componentDidCatch(error: any, errorInfo: any) {
-    console.log('our error', error, errorInfo);
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    console.log(`our error`, error, errorInfo);
   }
 
   render() {
-    console.log('this.state.hasError', this.state.hasError);
-    // @ts-ignore
     if (this.state.hasError) {
       return <span className="error-component">something went wrong</span>;
     }
 
-    // @ts-ignore
     return this.props.children;
   }
 }

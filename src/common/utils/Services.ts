@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ITable } from '../../pages/EmployeePage/section/Table/types';
+import { ITable } from '../../pages/home/section/Table/types';
 
 interface IName {
   name: string;

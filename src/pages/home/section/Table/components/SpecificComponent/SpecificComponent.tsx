@@ -9,7 +9,7 @@ function SpecificComponent({
   index: number;
 }) {
   const { isLoading, data: response, error } = useQuery({
-    queryKey: ['specific component'],
+    queryKey: [`specific component`],
     queryFn: () => Service.getSpecificData(),
   });
 

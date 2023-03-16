@@ -1,13 +1,15 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import EmployeePage from './pages/EmployeePage/EmployeePage';
+import HomePage from './pages/home/HomePage';
 
 export function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/*" element={<EmployeePage />} />
+        <Route
+          path="/*"
+          element={<HomePage />}
+        />
       </Routes>
     </BrowserRouter>
   );
 }
- 
