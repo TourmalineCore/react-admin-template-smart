@@ -8,19 +8,22 @@ import { api } from '../utils/HttpClient';
 export const useGet = <Type = any>({
   url,
   config,
-}:{
+}: {
   url: string;
-  config?:AxiosRequestConfig<Type>,
+  config?: AxiosRequestConfig<Type>;
 }) => {
   const handler = useErrorHandler();
 
   const { isLoading, data: response } = useQuery({
-    queryKey: ['name'],
+    queryKey: [`name`],
     retry: false,
     queryFn: () => api.get<Type>(url, config)
       .then((res) => res.data)
       .catch((e) => handler(e)),
   });
 
-  return { isLoading, response };
+  return {
+    isLoading,
+    response,
+  };
 };

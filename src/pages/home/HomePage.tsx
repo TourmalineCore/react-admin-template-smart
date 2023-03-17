@@ -7,7 +7,6 @@ import NameState from './section/Name/NameState';
 import NameStateContext from './section/Name/NameStateContext';
 import Name from './section/Name/Name';
 import Table from './section/Table/Table';
-import NewErrorBoundary from '../../components/NewErrorBoundary/NewErrorBoundary';
 
 function HomePage() {
   const nameState = useMemo(() => new NameState(), []);
@@ -15,9 +14,7 @@ function HomePage() {
   return (
     <NameStateContext.Provider value={nameState}>
       <div className="Home">
-        <NewErrorBoundary>
-          <Name />
-        </NewErrorBoundary>
+        <Name />
 
         <h2>Indicators</h2>
         <Indicators />

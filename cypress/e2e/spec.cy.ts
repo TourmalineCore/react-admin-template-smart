@@ -2,7 +2,7 @@ describe(`Test name is loaded correctly`, () => {
   const id = 5;
   const correctURL = `https://jsonplaceholder.typicode.com/users`;
 
-  it.skip(`receives correct response status`, () => {
+  it(`receives correct response status`, () => {
     cy.request({
       url: `${correctURL}/${id}`,
     }).then((resp) => {
@@ -10,7 +10,7 @@ describe(`Test name is loaded correctly`, () => {
     });
   });
 
-  it.skip(`loads name`, () => {
+  it(`loads name`, () => {
     cy.intercept(`GET`, `${correctURL}/${id}`, {
       fixture: `example.json`,
 
@@ -22,7 +22,7 @@ describe(`Test name is loaded correctly`, () => {
   });
 });
 
-describe(`Test error boundary is shown when request for name fails`, () => {
+describe(`Test error boundary behavior`, () => {
   const id = 2;
   const incorrectURL = `https://jsonplaceholder.typicode.com/users`;
 
@@ -32,11 +32,31 @@ describe(`Test error boundary is shown when request for name fails`, () => {
     cy.intercept(`GET`, `${incorrectURL}/${id}`, {
       statusCode: 404,
       body: `404 Not Found!`,
-      failOnStatusCode: false,
     }).as(`request`);
 
     cy.wait(`@request`);
-    cy.wait(10000);
+    cy.wait(2000);
     cy.get(`.error-component`);
+  });
+
+  it(`shows name instead of error boundary for name section after retry`, () => {
+    cy.visit(`http://localhost:5173/?id=${id}`);
+
+    cy.intercept(`GET`, `${incorrectURL}/${id}`, {
+      statusCode: 404,
+      body: `404 Not Found!`,
+    }).as(`request`);
+
+    cy.wait(`@request`);
+    cy.wait(2000);
+    cy.get(`.error-component`);
+
+    cy.intercept(`GET`, `${incorrectURL}/${id}`, {
+      statusCode: 200,
+      body: { name: `Erwan Henry` },
+    }).as(`request`);
+
+    cy.get(`button`).contains(`Try again`).click();
+    cy.get(`.name`).should(`have.text`, `Erwan Henry`);
   });
 });

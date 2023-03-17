@@ -5,7 +5,7 @@ import NameStateContext from './NameStateContext';
 
 export const useNameLoader = () => {
   const [params] = useSearchParams();
-  const id = params.get('id');
+  const id = params.get(`id`);
 
   const nameState = useContext(NameStateContext);
 
