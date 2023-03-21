@@ -7,6 +7,8 @@ import { App } from './App';
 import './index.scss';
 import 'react-loading-skeleton/dist/skeleton.css';
 
+// Why is this file main.tsx but not index.tsx? Is it a vite convention of some sort?
+
 import ErrorComponent from './components/ErrorComponent/ErrorComponent';
 
 const queryClient = new QueryClient();

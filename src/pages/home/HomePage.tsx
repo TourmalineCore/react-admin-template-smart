@@ -1,29 +1,23 @@
 import './HomePage.scss';
 
 import { useMemo } from 'react';
-import { observer } from 'mobx-react-lite';
 import Indicators from './section/Indicators/Indicators';
 import NameState from './section/Name/NameState';
 import NameStateContext from './section/Name/NameStateContext';
 import Name from './section/Name/Name';
 import Table from './section/Table/Table';
 
-function HomePage() {
+export default function HomePage() {
+  // ToDo use approach with ref to guarantee singleton from the video of a conference
   const nameState = useMemo(() => new NameState(), []);
 
   return (
-    <NameStateContext.Provider value={nameState}>
-      <div className="Home">
+    <div className="Home">
+      <NameStateContext.Provider value={nameState}>
         <Name />
-
-        <h2>Indicators</h2>
-        <Indicators />
-
-        <h2>Table</h2>
-        <Table />
-      </div>
-    </NameStateContext.Provider>
+      </NameStateContext.Provider>
+      <Indicators />
+      <Table />
+    </div>
   );
 }
-
-export default observer(HomePage);

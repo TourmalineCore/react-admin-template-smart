@@ -12,7 +12,7 @@ function Table() {
 
   const { isLoading, error } = useQuery({
     queryKey: [`table`],
-    queryFn: () => Service.getTableData(),
+    queryFn: () => Service.getTableDataAsync(),
     onSuccess: ({ data }) => {
       setDataTable(data);
     },
@@ -21,46 +21,49 @@ function Table() {
   useErrorHandler(error);
 
   return (
-    <table className="section table">
-      <thead>
-        <tr className="head">
-          <th className="column2">Position</th>
-          <th className="column3">Start date</th>
-          <th className="column4">Last Activity</th>
-          <th className="column5">Contacts</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        {isLoading && (
-          <>
-            <SkeletonTableRow />
-            <SkeletonTableRow />
-            <SkeletonTableRow />
-            <SkeletonTableRow />
-            <SkeletonTableRow />
-            <SkeletonTableRow />
-          </>
-        )}
-        {dataTable.map((item, index) => (
-          <tr
-            className="table-row"
-            key={item.id}
-          >
-            <td className="column2">{item.name}</td>
-            <td className="column3">
-
-              <ErrorBoundary FallbackComponent={ErrorComponent}>
-                <SpecificComponent index={index} />
-              </ErrorBoundary>
-
-            </td>
-            <td className="column4">{item.email}</td>
-            <td className="column5">{item.website}</td>
+    <>
+      <h2>Table</h2>
+      <table className="section table">
+        <thead>
+          <tr className="head">
+            <th className="column2">Position</th>
+            <th className="column3">Start date</th>
+            <th className="column4">Last Activity</th>
+            <th className="column5">Contacts</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+
+        <tbody>
+          {isLoading && (
+            <>
+              <SkeletonTableRow />
+              <SkeletonTableRow />
+              <SkeletonTableRow />
+              <SkeletonTableRow />
+              <SkeletonTableRow />
+              <SkeletonTableRow />
+            </>
+          )}
+          {dataTable.map((item, index) => (
+            <tr
+              className="table-row"
+              key={item.id}
+            >
+              <td data-cy="table-name-cell">{item.name}</td>
+              <td>
+
+                <ErrorBoundary FallbackComponent={ErrorComponent}>
+                  <SpecificComponent index={index} />
+                </ErrorBoundary>
+
+              </td>
+              <td className="column4">{item.email}</td>
+              <td className="column5">{item.website}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
   );
 }
 

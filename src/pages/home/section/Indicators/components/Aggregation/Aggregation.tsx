@@ -11,7 +11,7 @@ function Aggregation() {
 
   const { isLoading, data: response, error } = useQuery({
     queryKey: [`aggregated data`],
-    queryFn: () => Service.getAggregatedData(id),
+    queryFn: () => Service.getAggregatedDataAsync(id),
   });
 
   useErrorHandler(error);

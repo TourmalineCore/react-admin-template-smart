@@ -4,10 +4,13 @@ import Metrics from './components/Metrics/Metrics';
 
 function Indicators() {
   return (
-    <div className="section indicators">
-      <Metrics />
-      <Aggregation />
-    </div>
+    <>
+      <h2>Indicators</h2>
+      <div className="section indicators">
+        <Metrics />
+        <Aggregation />
+      </div>
+    </>
   );
 }
 

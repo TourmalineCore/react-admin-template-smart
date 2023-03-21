@@ -1,3 +1,6 @@
+// ToDo split into separate files
+// ToDo do we need interfaces here? Maybe these are types instead?
+
 export interface Geo {
   lat: string;
   lng: string;
@@ -17,6 +20,7 @@ export interface Company {
   bs: string;
 }
 
+// ToDo the only type started with I because overlaps with Table component byt name, need to make consistent
 export interface ITable {
   id: number;
   name: string;

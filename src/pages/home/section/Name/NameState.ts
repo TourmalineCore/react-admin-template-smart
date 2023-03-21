@@ -1,7 +1,7 @@
 import { makeAutoObservable } from 'mobx';
 
 class NameState {
-  private _name = '';
+  private _name = ``;
 
   private _isLoading = false;
 

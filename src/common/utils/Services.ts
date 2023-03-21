@@ -30,21 +30,22 @@ interface IAggregatedData {
 }
 
 export const Service = {
-  async getName(id: string | null) {
+  async getNameAsync(id: string | null) {
     return axios.get<IName>(`https://jsonplaceholder.typicode.com/users/${id}`)
       .then((response) => response.data.name)
-      .catch((err) => { throw new Error('Test we', { cause: err }); });
+      // ToDo is it still needed?
+      .catch((err) => { throw new Error(`Test we`, { cause: err }); });
   },
-  async getProjects(id: string | null) {
+  async getProjectsAsync(id: string | null) {
     return axios.get<IProject[]>(`https://jsonplaceholder.typicode.com/comments?postId=${id}`);
   },
-  async getAggregatedData(id: string | null) {
+  async getAggregatedDataAsync(id: string | null) {
     return axios.get<IAggregatedData[]>(`https://jsonplaceholder.typicode.com/comments?postId=${id}`);
   },
-  async getTableData() {
-    return axios.get<ITable[]>('https://jsonplaceholder.typicode.com/users');
+  async getTableDataAsync() {
+    return axios.get<ITable[]>(`https://jsonplaceholder.typicode.com/users`);
   },
-  async getSpecificData() {
-    return axios.get<ITable[]>('https://jsonplaceholder.typicode.com/users');
+  async getSpecificDataAsync() {
+    return axios.get<ITable[]>(`https://jsonplaceholder.typicode.com/users`);
   },
 };

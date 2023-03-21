@@ -10,7 +10,7 @@ function SpecificComponent({
 }) {
   const { isLoading, data: response, error } = useQuery({
     queryKey: [`specific component`],
-    queryFn: () => Service.getSpecificData(),
+    queryFn: () => Service.getSpecificDataAsync(),
   });
 
   useErrorHandler(error);

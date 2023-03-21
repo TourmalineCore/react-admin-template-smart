@@ -11,7 +11,10 @@ function Name() {
   const nameState = useContext(NameStateContext);
 
   return (
-    <div className="section name">
+    <div
+      className="section name"
+      data-cy="name-section"
+    >
       {nameState.name as string}
       {nameState.isLoading && (<Skeleton />)}
     </div>

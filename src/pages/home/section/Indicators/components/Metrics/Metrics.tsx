@@ -11,7 +11,7 @@ function Metrics() {
 
   const { isLoading, data: response, error } = useQuery({
     queryKey: [`projects`],
-    queryFn: () => Service.getProjects(id),
+    queryFn: () => Service.getProjectsAsync(id),
   });
 
   useErrorHandler(error);
