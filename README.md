@@ -7,7 +7,6 @@ It consists of:
 * React-Query
 * Skeleton Loader
 
-
 ## Common commands
 
 ### `npm ci`
@@ -58,8 +57,10 @@ This is a pre-file, a set of instructions which is needed to write the image. It
 
 When you run the docker run command, the program first checks if the required image is in the local storage.
 
-## ⚡ Our list of suggestions for improving the template:
+## ⚡ ToDo:
+We want to improve and expand the capabilities of our template
 
+Here is our wish list:
 1. ✅ Common commands
 2. ✅ Dockerfile
 3. ✅ Env vars build 
