@@ -11,7 +11,7 @@ It consists of:
 
 ### `npm ci`
 
-Installs modules guided by the package-lock.json lock file. This allows you to create reproducible builds.: you get exactly what you expect with each installation.
+Installs modules guided by the package-lock.json lock file. This allows you to create reproducible builds: you get exactly what you expect with each installation.
 
 ### `npm start`
 
@@ -25,12 +25,12 @@ Runs the ava test watcher in an interactive mode.<br>
 By default, runs tests related to files changed since the last commit.
 
 ### `npm run cypress:run`
-To work properly, you must first run the command `npm start`.
+For it to work properly, you must first run the command `npm start`.
 
-This command will find all the tests in the project, after it will run all test and output the result to the terminal.
+This command will find all the tests in the project, then it will run all the test and output the result to the terminal.
 
 ### `npm run cypress:open` 
-This command will open the Cypress launchpad where you can choose which testing you want to do.
+This command will open the Cypress launchpad where you can choose what kind of testing you want to do.
 
 Here's what the launchpad looks like:
 <img src="https://docs.cypress.io/img/guides/core-concepts/cypress-app/the-launchpad.png" alt="cypress board" width="80%"/>
@@ -53,7 +53,7 @@ The command will boot up a local static web server that serves the files from di
 ### `Dockerfile`
 In our projects we use [Docker](https://docs.docker.com/build/) to publish our website and the first thing we need to get it right is Dockerfile.
 
-This is a pre-file, a set of instructions which is needed to write the image. It describes what should be in the image and what commands, dependencies and processes it will contain. 
+This is a pre-file, a set of instructions which are needed to write the image. It describes what should be there in the image and what commands, dependencies, and processes it will contain. 
 
 When you run the docker run command, the program first checks if the required image is in the local storage.
 
