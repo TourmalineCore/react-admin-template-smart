@@ -1,10 +1,13 @@
 {
-  "name": "vite-project",
+  "name": "react-admin-template-smart",
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "",
   "scripts": {
     "start": "vite",
+    "start:dev": "run-s create-config:dev start",
+    "start:local": "run-s create-config:local start",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "test": "tsc && ava",
@@ -14,7 +17,9 @@
     "lint:scss": "npx stylelint ./src/**/*.scss",
     "lint:css:fix": "npx stylelint ./src/**/*.{css,scss} --fix",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
+    "cypress:run": "cypress run",
+    "create-config:dev": "node local-config-builder dev",
+    "create-config:local": "node local-config-builder local"
   },
   "dependencies": {
     "@tanstack/react-query": "^4.24.4",
