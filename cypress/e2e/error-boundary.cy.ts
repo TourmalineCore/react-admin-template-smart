@@ -38,3 +38,5 @@ describe(`Error Boundary`, () => {
       .contains(`Erwan Henry`);
   });
 });
+
+export {};

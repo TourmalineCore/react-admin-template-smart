@@ -17,3 +17,5 @@ describe(`Name`, () => {
       .contains(`Leanne Graham`);
   });
 });
+
+export {};
