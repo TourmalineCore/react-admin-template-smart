@@ -19,7 +19,8 @@
   "include": [
     "src",
     "vite.config.ts",
-    "cypress" 
+    "cypress",
+    "local-config-builder.js"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -3,8 +3,6 @@ import { AxiosRequestConfig } from 'axios';
 import { useErrorHandler } from 'react-error-boundary';
 import { api } from '../utils/HttpClient';
 
-// import { api } from '../utils/HttpClient';
-
 export const useGet = <Type = any>({
   url,
   config,
