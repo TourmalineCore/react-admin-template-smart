@@ -18,7 +18,9 @@
     "lint:css:fix": "npx stylelint ./src/**/*.{css,scss} --fix",
     "cypress:open": "run-s create-config:local && cypress open",
     "cypress:run": "run-s create-config:local && cypress run",
-    "create-config:local": "node local-config-builder local"
+    "create-config:local": "node local-config-builder local",
+    "prepare": "husky install",
+    "check-commit": "commitlint --edit"
   },
   "dependencies": {
     "@tanstack/react-query": "^4.24.4",
@@ -52,7 +54,7 @@
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "husky": "^8.0.2",
+    "husky": "^8.0.3",
     "jsdom": "^20.0.3",
     "npm-run-all": "^4.1.5",
     "postcss-scss": "^4.0.6",
