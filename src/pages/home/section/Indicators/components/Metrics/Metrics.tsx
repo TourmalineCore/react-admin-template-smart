@@ -42,4 +42,4 @@ function Metrics() {
   );
 }
 
-export default withErrorBoundary(Metrics);
+export default withErrorBoundary(Metrics, { hasRetry: true });

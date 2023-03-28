@@ -7,8 +7,7 @@
   "scripts": {
     "start": "run-s create-config:local start-devserver",
     "start-devserver": "vite",
-    "build": "run-s create-config:local build-vite",
-    "build-vite": "tsc && vite build",
+    "build": "tsc && vite build",
     "preview": "vite preview --host",
     "test": "tsc && ava",
     "lint": "run-s lint:scss lint:ts",
@@ -16,8 +15,8 @@
     "lint:ts:fix": "eslint --no-error-on-unmatched-pattern ./src/**/*.{ts,tsx} --fix",
     "lint:scss": "npx stylelint ./src/**/*.scss",
     "lint:css:fix": "npx stylelint ./src/**/*.{css,scss} --fix",
-    "cypress:open": "run-s create-config:local && cypress open",
-    "cypress:run": "run-s create-config:local && cypress run",
+    "cypress:open": "cypress open --e2e --browser chrome",
+    "cypress:run": "cypress run",
     "create-config:local": "node local-config-builder local",
     "prepare": "husky install",
     "check-commit": "commitlint --edit"

@@ -5,10 +5,10 @@ import { Service } from '../../../../common/utils/Services';
 import ErrorComponent from '../../../../components/ErrorComponent/ErrorComponent';
 import SkeletonTableRow from './components/SkeletonTableRow/SkeletonTableRow';
 import SpecificComponent from './components/SpecificComponent/SpecificComponent';
-import { ITable } from './types';
+import { TableType } from './types';
 
 function Table() {
-  const [dataTable, setDataTable] = useState<ITable[]>([]);
+  const [dataTable, setDataTable] = useState<TableType[]>([]);
 
   const { isLoading, error } = useQuery({
     queryKey: [`table`],

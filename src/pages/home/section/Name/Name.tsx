@@ -21,4 +21,7 @@ function Name() {
   );
 }
 
-export default withErrorBoundary(observer(Name));
+export default withErrorBoundary(observer(Name), {
+  customError: `Name component have error`,
+  hasRetry: true,
+});

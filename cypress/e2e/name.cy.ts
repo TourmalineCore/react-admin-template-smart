@@ -1,5 +1,4 @@
-// ToDo extract to env and read from there in the main code and in tests as well
-const CORRECT_URL = `https://jsonplaceholder.typicode.com/users`;
+const CORRECT_URL = Cypress.env(`CORRECT_URL`);
 const ID = 5;
 
 describe(`Name`, () => {

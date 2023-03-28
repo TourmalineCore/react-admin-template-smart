@@ -1,18 +1,22 @@
 /* eslint-disable react/no-unstable-nested-components */
-import { AxiosError } from 'axios';
 import { ComponentType } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorComponent from '../../components/ErrorComponent/ErrorComponent';
 
-function withErrorBoundary<P extends Record<string, unknown>, ErrorTypes = AxiosError>(
+function withErrorBoundary<P extends Record<string, unknown>>(
   Component: ComponentType<P>,
+  option?: {
+    customError?: string;
+    hasRetry?: boolean;
+  },
 ): ComponentType<P> {
   return (props) => (
     <ErrorBoundary
       fallbackRender={({ error, resetErrorBoundary }) => (
         <ErrorComponent
-          error={error as ErrorTypes}
+          error={error}
           resetErrorBoundary={resetErrorBoundary}
+          option={option}
         />
       )}
     >
