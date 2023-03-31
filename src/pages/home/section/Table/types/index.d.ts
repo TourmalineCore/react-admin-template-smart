@@ -1,10 +1,9 @@
-// ToDo split into separate files
-export type GeoType = {
+type GeoType = {
   lat: string;
   lng: string;
 };
 
-export type AddressType = {
+type AddressType = {
   street: string;
   suite: string;
   city: string;
@@ -12,13 +11,13 @@ export type AddressType = {
   geo: GeoType;
 };
 
-export type CompanyType = {
+type CompanyType = {
   name: string;
   catchPhrase: string;
   bs: string;
 };
 
-export type TableType = {
+type TableType = {
   id: number;
   name: string;
   username: string;

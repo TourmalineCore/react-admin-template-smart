@@ -3,12 +3,11 @@ import { ComponentType } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorComponent from '../../components/ErrorComponent/ErrorComponent';
 
-function withErrorBoundary<P extends Record<string, unknown>>(
+// renamed the component, since the package react-error-boundary and our HOC have the same names
+// ToDo https://tanstack.com/query/v4/docs/react/reference/QueryErrorResetBoundary
+function errorBoundaryObserver<P extends Record<string, unknown>>(
   Component: ComponentType<P>,
-  option?: {
-    customError?: string;
-    hasRetry?: boolean;
-  },
+  option?: ErrorBoundaryOptionTypes,
 ): ComponentType<P> {
   return (props) => (
     <ErrorBoundary
@@ -25,4 +24,4 @@ function withErrorBoundary<P extends Record<string, unknown>>(
   );
 }
 
-export default withErrorBoundary;
+export default errorBoundaryObserver;

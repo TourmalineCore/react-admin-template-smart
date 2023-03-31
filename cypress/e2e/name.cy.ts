@@ -1,10 +1,10 @@
-const CORRECT_URL = Cypress.env(`CORRECT_URL`);
-const ID = 5;
+const CORRECT_URL = Cypress.env(`APP_URL`);
+const ID = Cypress.env(`USER_ID`);
 
 describe(`Name`, () => {
   it(`loads name when there is a success response from server`, () => {
     cy
-      .intercept(`GET`, `${CORRECT_URL}/${ID}`, {
+      .intercept(`GET`, `${CORRECT_URL}/user/${ID}`, {
         fixture: `example.json`,
       });
 

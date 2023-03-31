@@ -1,27 +1,31 @@
-import { observer } from 'mobx-react-lite';
-import { useContext } from 'react';
 import Skeleton from 'react-loading-skeleton';
-import withErrorBoundary from '../../../../common/HOC/withErrorBoundary';
-import NameStateContext from './NameStateContext';
-import { useNameLoader } from './useNameLoader';
+import errorBoundaryObserver from '../../../../common/hoc/errorBoundaryObserver';
+import { useGet } from '../../../../common/hooks/useGet';
+import useId from '../../../../common/hooks/useId';
 
 function Name() {
-  useNameLoader();
+  const { id } = useId();
 
-  const nameState = useContext(NameStateContext);
+  const {
+    isLoading,
+    response,
+  } = useGet<NameTypes>({
+    queryKey: [`name`],
+    url: `users/${id}`,
+  });
 
   return (
     <div
       className="section name"
       data-cy="name-section"
     >
-      {nameState.name as string}
-      {nameState.isLoading && (<Skeleton />)}
+      {response?.name}
+      {isLoading && (<Skeleton />)}
     </div>
   );
 }
 
-export default withErrorBoundary(observer(Name), {
+export default errorBoundaryObserver(Name, {
   customError: `Name component have error`,
-  hasRetry: true,
+  canRetry: true,
 });

@@ -3,23 +3,20 @@ import { AxiosError } from 'axios';
 function ErrorComponent({
   error,
   resetErrorBoundary,
-  option,
+  option = {},
 }: {
   error: AxiosError | Error;
   resetErrorBoundary: (...args: Array<unknown>) => void;
-  option?: {
-    customError?: string;
-    hasRetry?: boolean;
-  };
+  option?: ErrorBoundaryOptionTypes;
 }) {
   return (
     <div
       className="section error-component"
       data-cy="error-component"
     >
-      {option ? option.customError : error.message}
+      <span>{option.customError || error.message}</span>
 
-      {option?.hasRetry && (
+      {option.canRetry && (
         <button
           type="button"
           onClick={() => resetErrorBoundary()}

@@ -9,7 +9,8 @@ export default defineConfig({
     },
   },
   env: {
-    CORRECT_URL: `https://jsonplaceholder.typicode.com/users`,
+    APP_URL: `https://jsonplaceholder.typicode.com`,
+    USER_ID: 5,
   },
   component: {
     devServer: {

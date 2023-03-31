@@ -20,16 +20,14 @@ Open http://localhost:5173 / to view it in your browser.
 
 The page will automatically reload after any changes to the code.
 
-### `npm test` 
-Runs the ava test watcher in an interactive mode.<br>
-By default, runs tests related to files changed since the last commit.
-
 ### `npm run cypress:run`
 For it to work properly, you must first run the command `npm start`.
 
 This command will find all the tests in the project, then it will run all the test and output the result to the terminal.
 
 ### `npm run cypress:open` 
+For it to work properly, you must first run the command `npm start`.
+
 This command will open the Cypress launchpad where you can choose what kind of testing you want to do.
 
 Here's what the launchpad looks like:
@@ -50,12 +48,20 @@ The command will boot up a local static web server that serves the files from di
 
 ## What we have
 
-### `Dockerfile`
+### <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" width="30" height="30" align="left" hspace="10"/>    `Dockerfile`
+<br />
+
 In our projects we use [Docker](https://docs.docker.com/build/) to publish our website and the first thing we need to get it right is Dockerfile.
 
 This is a pre-file, a set of instructions which are needed to write the image. It describes what should be there in the image and what commands, dependencies, and processes it will contain. 
 
 When you run the docker run command, the program first checks if the required image is in the local storage.
+ 
+### <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" width="30" height="30" align="left" hspace="10" /> ` TypeScript `
+<br />
+Our team does not like a lot of imports in files and therefore we use an approach where we add all types to the global scope.
+
+You can get acquainted with this function [here](https://www.typescriptlang.org/docs/handbook/declaration-files/templates/global-d-ts.html)
 
 ## ⚡ ToDo:
 We want to improve and expand the capabilities of our template

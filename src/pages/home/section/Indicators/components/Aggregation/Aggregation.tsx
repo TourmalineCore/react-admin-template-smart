@@ -1,20 +1,18 @@
-import { useQuery } from '@tanstack/react-query';
-import { useErrorHandler } from 'react-error-boundary';
 import Skeleton from 'react-loading-skeleton';
-import { useSearchParams } from 'react-router-dom';
-import withErrorBoundary from '../../../../../../common/HOC/withErrorBoundary';
-import { Service } from '../../../../../../common/utils/Services';
+import errorBoundaryObserver from '../../../../../../common/hoc/errorBoundaryObserver';
+import { useGet } from '../../../../../../common/hooks/useGet';
+import useId from '../../../../../../common/hooks/useId';
 
 function Aggregation() {
-  const [params] = useSearchParams();
-  const id = params.get(`id`);
+  const { id } = useId();
 
-  const { isLoading, data: response, error } = useQuery({
-    queryKey: [`aggregated data`],
-    queryFn: () => Service.getAggregatedDataAsync(id),
+  const {
+    isLoading,
+    response,
+  } = useGet<AggregatedDataTypes[]>({
+    queryKey: [`aggregations`],
+    url: `/comments?postId=${id}`,
   });
-
-  useErrorHandler(error);
 
   return (
     <div className="aggregation">
@@ -28,7 +26,7 @@ function Aggregation() {
       )
         : (
           <ul className="list">
-            {response?.data.map((aggregation) => (
+            {response!.map((aggregation) => (
               <li
                 className="item"
                 key={aggregation.name}
@@ -42,4 +40,4 @@ function Aggregation() {
   );
 }
 
-export default withErrorBoundary(Aggregation);
+export default errorBoundaryObserver(Aggregation, { canRetry: true });

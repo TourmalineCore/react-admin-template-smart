@@ -19,6 +19,7 @@
   "include": [
     "src",
     "vite.config.ts",
+    "global-types.d.ts",
     "cypress",
     "cypress.config.ts",
     "local-config-builder.js"
