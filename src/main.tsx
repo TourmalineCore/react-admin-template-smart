@@ -1,17 +1,22 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { ErrorBoundary } from 'react-error-boundary';
-import { App } from './App';
-
 import './index.scss';
 import 'react-loading-skeleton/dist/skeleton.css';
 
-// Why is this file main.tsx but not index.tsx? Is it a vite convention of some sort?
-
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { ErrorBoundary } from 'react-error-boundary';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import ErrorComponent from './components/ErrorComponent/ErrorComponent';
 
-const queryClient = new QueryClient();
+import { App } from './App';
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: false,
+      cacheTime: 0,
+    },
+  },
+});
 
 ReactDOM.createRoot(document.getElementById(`root`) as HTMLElement).render(
   <React.StrictMode>

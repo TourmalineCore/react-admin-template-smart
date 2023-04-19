@@ -1,26 +1,29 @@
-import { useQuery } from '@tanstack/react-query';
-import { useErrorHandler } from 'react-error-boundary';
 import Skeleton from 'react-loading-skeleton';
-import { Service } from '../../../../../../common/utils/Services';
+import errorBoundaryObserver from '../../../../../../common/hoc/errorBoundaryObserver';
+
+import { useGet } from '../../../../../../common/hooks/useGet';
 
 function SpecificComponent({
   index,
 }: {
   index: number;
 }) {
-  const { isLoading, data: response, error } = useQuery({
-    queryKey: [`specific component`],
-    queryFn: () => Service.getSpecificDataAsync(),
+  const {
+    isLoading,
+    response,
+  } = useGet<TableType[]>({
+    queryKey: [`specific-component`],
+    url: `/users`,
   });
-
-  useErrorHandler(error);
 
   return (
     <span>
       {isLoading && <Skeleton />}
-      {response?.data[index].phone}
+      {response?.length && (
+        <span>{response![index].phone}</span>
+      )}
     </span>
   );
 }
 
-export default SpecificComponent;
+export default errorBoundaryObserver(SpecificComponent);

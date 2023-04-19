@@ -1,33 +1,29 @@
-// ToDo split into separate files
-// ToDo do we need interfaces here? Maybe these are types instead?
-
-export interface Geo {
+type GeoType = {
   lat: string;
   lng: string;
-}
+};
 
-export interface Address {
+type AddressType = {
   street: string;
   suite: string;
   city: string;
   zipcode: string;
-  geo: Geo;
-}
+  geo: GeoType;
+};
 
-export interface Company {
+type CompanyType = {
   name: string;
   catchPhrase: string;
   bs: string;
-}
+};
 
-// ToDo the only type started with I because overlaps with Table component byt name, need to make consistent
-export interface ITable {
+type TableType = {
   id: number;
   name: string;
   username: string;
   email: string;
-  address: Address;
+  address: AddressType;
   phone: string;
   website: string;
-  company: Company;
-}
+  company: CompanyType;
+};

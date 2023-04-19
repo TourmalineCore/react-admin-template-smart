@@ -1,20 +1,18 @@
-import { useQuery } from '@tanstack/react-query';
-import { useErrorHandler } from 'react-error-boundary';
 import Skeleton from 'react-loading-skeleton';
-import { useSearchParams } from 'react-router-dom';
-import withErrorBoundary from '../../../../../../common/HOC/withErrorBoundary';
-import { Service } from '../../../../../../common/utils/Services';
+import errorBoundaryObserver from '../../../../../../common/hoc/errorBoundaryObserver';
+import useId from '../../../../../../common/hooks/useId';
+import { useGet } from '../../../../../../common/hooks/useGet';
 
 function Metrics() {
-  const [params] = useSearchParams();
-  const id = params.get(`id`);
+  const { id } = useId();
 
-  const { isLoading, data: response, error } = useQuery({
-    queryKey: [`projects`],
-    queryFn: () => Service.getProjectsAsync(id),
+  const {
+    isLoading,
+    response,
+  } = useGet<ProjectTypes[]>({
+    queryKey: [`metrics`],
+    url: `/comments?postId=${id}`,
   });
-
-  useErrorHandler(error);
 
   return (
     <div className="metrics">
@@ -28,7 +26,7 @@ function Metrics() {
       )
         : (
           <ul className="list">
-            {response?.data.map((project) => (
+            {response!.map((project) => (
               <li
                 className="item"
                 key={project.id}
@@ -42,4 +40,4 @@ function Metrics() {
   );
 }
 
-export default withErrorBoundary(Metrics);
+export default errorBoundaryObserver(Metrics, { canRetry: true });

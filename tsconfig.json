@@ -19,7 +19,10 @@
   "include": [
     "src",
     "vite.config.ts",
-    "cypress" 
+    "global-types.d.ts",
+    "cypress",
+    "cypress.config.ts",
+    "local-config-builder.js"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

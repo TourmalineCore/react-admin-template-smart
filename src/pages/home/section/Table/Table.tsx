@@ -1,24 +1,16 @@
-import { useQuery } from '@tanstack/react-query';
-import { useState } from 'react';
-import { ErrorBoundary, useErrorHandler } from 'react-error-boundary';
-import { Service } from '../../../../common/utils/Services';
-import ErrorComponent from '../../../../components/ErrorComponent/ErrorComponent';
-import SkeletonTableRow from './components/SkeletonTableRow/SkeletonTableRow';
 import SpecificComponent from './components/SpecificComponent/SpecificComponent';
-import { ITable } from './types';
+import SkeletonTableRow from './components/SkeletonTableRow/SkeletonTableRow';
+import { useGet } from '../../../../common/hooks/useGet';
+import errorBoundaryObserver from '../../../../common/hoc/errorBoundaryObserver';
 
 function Table() {
-  const [dataTable, setDataTable] = useState<ITable[]>([]);
-
-  const { isLoading, error } = useQuery({
-    queryKey: [`table`],
-    queryFn: () => Service.getTableDataAsync(),
-    onSuccess: ({ data }) => {
-      setDataTable(data);
-    },
+  const {
+    isLoading,
+    response,
+  } = useGet<TableType[]>({
+    queryKey: [`specific-component`],
+    url: `/users`,
   });
-
-  useErrorHandler(error);
 
   return (
     <>
@@ -44,18 +36,14 @@ function Table() {
               <SkeletonTableRow />
             </>
           )}
-          {dataTable.map((item, index) => (
+          {response?.map((item, index) => (
             <tr
               className="table-row"
               key={item.id}
             >
               <td data-cy="table-name-cell">{item.name}</td>
               <td>
-
-                <ErrorBoundary FallbackComponent={ErrorComponent}>
-                  <SpecificComponent index={index} />
-                </ErrorBoundary>
-
+                <SpecificComponent index={index} />
               </td>
               <td className="column4">{item.email}</td>
               <td className="column5">{item.website}</td>
@@ -67,4 +55,4 @@ function Table() {
   );
 }
 
-export default Table;
+export default errorBoundaryObserver(Table);

@@ -1,18 +1,21 @@
 /* eslint-disable react/no-unstable-nested-components */
-import { AxiosError } from 'axios';
 import { ComponentType } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorComponent from '../../components/ErrorComponent/ErrorComponent';
 
-function withErrorBoundary<P extends Record<string, unknown>, ErrorTypes = AxiosError>(
+// renamed the component, since the package react-error-boundary and our HOC have the same names
+// ToDo https://tanstack.com/query/v4/docs/react/reference/QueryErrorResetBoundary
+function errorBoundaryObserver<P extends Record<string, unknown>>(
   Component: ComponentType<P>,
+  option?: ErrorBoundaryOptionTypes,
 ): ComponentType<P> {
   return (props) => (
     <ErrorBoundary
       fallbackRender={({ error, resetErrorBoundary }) => (
         <ErrorComponent
-          error={error as ErrorTypes}
+          error={error}
           resetErrorBoundary={resetErrorBoundary}
+          option={option}
         />
       )}
     >
@@ -21,4 +24,4 @@ function withErrorBoundary<P extends Record<string, unknown>, ErrorTypes = Axios
   );
 }
 
-export default withErrorBoundary;
+export default errorBoundaryObserver;
