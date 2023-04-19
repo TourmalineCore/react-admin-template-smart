@@ -6,6 +6,7 @@ It consists of:
 * ErrorBoundary
 * React-Query
 * Skeleton Loader
+* Husky
 
 ## Common commands
 
@@ -48,6 +49,30 @@ The command will boot up a local static web server that serves the files from di
 
 ## What we have
 
+### ` Husky `
+
+We use husky so that all developers follow the standards of conventional commits during the development
+
+To learn more about conventional commits check the following resource:
+
+- [Conventional Commits Documentation](https://www.conventionalcommits.org/ru/v1.0.0-beta.4/)
+
+The rules for conventional commits validation are configured in the file `.commitlintrc`
+
+If you want to change the validation rules, you must:
+
+- check commitlint [rules settings](https://commitlint.js.org/#/reference-rules) 
+- change `rules` section in the `.commitlintrc` file based on your needs
+
+### ` Husky with nvm `
+
+If on commit you see this kind of error `.husky/commit-msg: line 5: npm: command not found` and you are using nvm you might need to create ~/.huskyrc with
+```
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+```
+Source: https://stackoverflow.com/questions/67063993/sh-husky-command-not-found
+
 ### <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" width="30" height="30" align="left" hspace="10"/>    `Dockerfile`
 <br />
 
@@ -62,6 +87,13 @@ When you run the docker run command, the program first checks if the required im
 Our team does not like a lot of imports in files and therefore we use an approach where we add all types to the global scope.
 
 You can get acquainted with this function [here](https://www.typescriptlang.org/docs/handbook/declaration-files/templates/global-d-ts.html)
+
+
+### ` ErrorBoundary `
+
+By default, if your application throws an error during rendering, React will remove its UI from the screen. To prevent this, you can wrap a part of your UI into an error boundary. 
+
+An error boundary is a special component that lets you display some fallback UI instead of the part that crashed—for example, an error message.
 
 ## ⚡ ToDo:
 We want to improve and expand the capabilities of our template
