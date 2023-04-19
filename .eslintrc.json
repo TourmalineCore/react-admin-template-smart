@@ -40,6 +40,15 @@
           "error",
           "unix"
       ],
+      // start. new rules after review Alex
+      "@typescript-eslint/member-delimiter-style": "warn", 
+      "@typescript-eslint/type-annotation-spacing": "warn",
+      "no-multi-spaces": "error",
+      "react/jsx-max-props-per-line": [1, { "maximum": 1 }],
+      "react/jsx-curly-spacing": [2, {"when": "never", "children": true }],
+      "quotes": "off",
+      "@typescript-eslint/quotes": ["error", "backtick", { "avoidEscape": true }],
+      // end . need testing
       "max-len": [
         "error",
         {
@@ -55,7 +64,7 @@
           "everything-else"
         ]
       }],
-      "object-property-newline": "error",
+      "object-property-newline": ["error", { "allowAllPropertiesOnSameLine": false }],
       "import/prefer-default-export": 0,
       "import/no-extraneous-dependencies": 0,
       "no-underscore-dangle": 0,

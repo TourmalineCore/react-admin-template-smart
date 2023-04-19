@@ -4,13 +4,13 @@
 	"plugins": [
 		"stylelint-scss",
 		"stylelint-order"
-  ],
-  "ignoreFiles": [
-    "**/public/**/*",
-    "**/dist/**/*",
-    "**/node_modules/**/*"
-  ],
-	"rules": {
+	],
+	"ignoreFiles": [
+		"**/public/**/*",
+		"**/dist/**/*",
+		"**/node_modules/**/*"
+	],
+	"rules": { 
 		"keyframes-name-pattern": null,
 		"selector-class-pattern": null,
 		"declaration-block-no-duplicate-properties": [
@@ -50,6 +50,7 @@
 		"color-named": "never",
 		"function-url-quotes": "always",
 		"indentation": 2,
+		"import-notation": "string",
 		"no-empty-source": null,
 		"string-quotes": "double",
 		"value-keyword-case": null,
