@@ -17,7 +17,7 @@ Installs modules guided by the package-lock.json lock file. This allows you to c
 ### `npm start`
 
 Run the application in development mode.
-Open http://localhost:5173 / to view it in your browser.
+Open http://localhost:5173/?id=2 to view it in your browser.
 
 The page will automatically reload after any changes to the code.
 
