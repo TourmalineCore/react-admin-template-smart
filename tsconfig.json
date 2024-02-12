@@ -24,6 +24,7 @@
     "cypress.config.ts",
     "local-config-builder.js"
   ],
+  "exclude": [".vscode","node_modules"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
  

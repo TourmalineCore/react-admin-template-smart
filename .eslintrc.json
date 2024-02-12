@@ -12,6 +12,7 @@
         "airbnb",
         "airbnb-typescript"
     ],
+    "ignorePatterns": [".vscode"],
     "parserOptions": {
       "project": "./tsconfig.json",
       "ecmaFeatures": {
