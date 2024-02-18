@@ -10,4 +10,27 @@ describe(`ToDoListState`, () => {
 
     expect(toDoListState.todos).to.deep.eq([]);
   });
+
+  it(`
+  GIVEN initial state with no ToDo items
+  WHEN initialize with two ToDo items
+  SHOULD return them from todos get property
+  `, () => {
+    const toDoListState = new ToDoListState();
+
+    const todosForInitialization = [
+      {
+        name: `Fizz`,
+      },
+      {
+        name: `Buzz`,
+      },
+    ];
+
+    toDoListState.initialize({
+      todos: todosForInitialization,
+    });
+
+    expect(toDoListState.todos).to.deep.eq(todosForInitialization);
+  });
 });
