@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { ToDoListStateContext } from "./state/ToDoListStateContext";
 import { api } from "../../../../common/utils/HttpClient";
 import { ToDoListContent } from "./ToDoListContent";
@@ -6,21 +6,34 @@ import { ToDoListContent } from "./ToDoListContent";
 const ToDoListContainer = () => {
   const toDoListState = useContext(ToDoListStateContext);
 
+  // https://stackoverflow.com/a/74609594
+  const effectRan = useRef(false);
+
   useEffect(() => {
     async function loadTodos() {
       const {
-        data,
+        data: {
+          todos,
+        },
       } = await api.get<{
-        id: number;
-        name: string;
-      }[]>(`/todos`);
+        todos: {
+          id: number;
+          name: string;
+        }[];
+      }>(`/todos`);
 
       toDoListState.initialize({
-        todos: data,
+        todos,
       });
     }
 
-    loadTodos();
+    if (!effectRan.current) {
+      loadTodos();
+    }
+
+    return () => {
+      effectRan.current = true;
+    };
   }, []);
 
   return (

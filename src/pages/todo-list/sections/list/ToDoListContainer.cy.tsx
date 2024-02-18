@@ -14,16 +14,18 @@ describe(`ToDoListContainer`, () => {
     cy.intercept(
       `GET`,
       `${API_ROOT}/todos`,
-      [
-        {
-          id: 1,
-          name: `Un`,
-        },
-        {
-          id: 2,
-          name: `Deux`,
-        },
-      ],
+      {
+        todos: [
+          {
+            id: 1,
+            name: `Un`,
+          },
+          {
+            id: 2,
+            name: `Deux`,
+          },
+        ],
+      },
     );
 
     mountComponent();

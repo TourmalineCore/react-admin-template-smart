@@ -13,9 +13,11 @@ describe(`ToDoListContent`, () => {
     mountComponent({
       todos: [
         {
+          id: 1,
           name: `First Fizz`,
         },
         {
+          id: 2,
           name: `Second Buzz`,
         },
       ],

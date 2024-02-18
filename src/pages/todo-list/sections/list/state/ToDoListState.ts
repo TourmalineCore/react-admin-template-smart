@@ -1,6 +1,7 @@
 import { makeAutoObservable } from "mobx";
 
 type ToDo = {
+  id: number;
   name: string;
 };
 

@@ -10,8 +10,16 @@ const ToDoListContent = observer(() => {
       {
         toDoListState
           .todos
-          .map((todo) => (
-            <li>{todo.name}</li>
+          .map(({
+            id,
+            name,
+          }) => (
+            <li
+              key={`todo-${id}`}
+              data-cy="todo-item"
+            >
+              {name}
+            </li>
           ))
       }
     </ul>

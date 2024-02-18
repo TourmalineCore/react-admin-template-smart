@@ -20,9 +20,11 @@ describe(`ToDoListState`, () => {
 
     const todosForInitialization = [
       {
+        id: 2,
         name: `Fizz`,
       },
       {
+        id: 3,
         name: `Buzz`,
       },
     ];
