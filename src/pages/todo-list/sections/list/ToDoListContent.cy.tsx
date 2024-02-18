@@ -1,4 +1,6 @@
 import { ToDoListContent } from "./ToDoListContent";
+import { ToDoListState } from "./state/ToDoListState";
+import { ToDoListStateContext } from "./state/ToDoListStateContext";
 
 describe(`ToDoListContent`, () => {
   it(`
@@ -6,9 +8,30 @@ describe(`ToDoListContent`, () => {
   WHEN render the component
   SHOULD see them
   `, () => {
-    cy.mount(<ToDoListContent />);
+    mountComponent();
 
-    cy.contains(`First ToDo`);
-    cy.contains(`Second ToDo`);
+    cy.contains(`First Fizz`);
+    cy.contains(`Second Buzz`);
   });
 });
+
+function mountComponent() {
+  const toDoListState = new ToDoListState();
+
+  toDoListState.initialize({
+    todos: [
+      {
+        name: `First Fizz`,
+      },
+      {
+        name: `Second Buzz`,
+      },
+    ],
+  });
+
+  cy.mount(
+    <ToDoListStateContext.Provider value={toDoListState}>
+      <ToDoListContent />
+    </ToDoListStateContext.Provider>,
+  );
+}
