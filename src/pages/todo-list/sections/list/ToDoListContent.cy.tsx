@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { ToDoListContent } from "./ToDoListContent";
 import { ToDoListState } from "./state/ToDoListState";
 import { ToDoListStateContext } from "./state/ToDoListStateContext";
