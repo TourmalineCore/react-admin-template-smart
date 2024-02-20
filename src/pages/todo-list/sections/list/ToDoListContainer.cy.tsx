@@ -59,6 +59,35 @@ describe(`ToDoListContainer`, () => {
     cy.get(`[data-cy=delete-selected-todos-button]`)
       .should(`not.be.disabled`);
   });
+
+  it(`
+  GIVEN Two ToDo items from network
+  WHEN select both of them and click Complete
+  SHOULD call network with the ids in the body
+  `, () => {
+    cy.intercept(
+      `POST`,
+      `${API_ROOT}/todos/complete`,
+      `true`, // because it needs this to be specified and to be string, even if it is not correct by the API contract
+    ).as(`completeToDosNetworkCall`);
+
+    mountComponent();
+
+    cy.contains(`Un`)
+      .click();
+
+    cy.contains(`Deux`)
+      .click();
+
+    cy.get(`[data-cy=delete-selected-todos-button]`)
+      .click();
+
+    cy.get(`@completeToDosNetworkCall`)
+      .its(`request.body`)
+      .should(`deep.equal`, {
+        toDoIds: [1, 2],
+      });
+  });
 });
 
 function mountComponent() {
