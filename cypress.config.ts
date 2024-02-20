@@ -19,5 +19,7 @@ export default defineConfig({
     },
     viewportHeight: 600,
     viewportWidth: 1000,
+    // that it quickly fails during the workshop
+    defaultCommandTimeout: 500,
   },
 });
