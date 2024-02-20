@@ -53,6 +53,36 @@ describe(`ToDoListContent`, () => {
     cy.contains(`Third`);
     cy.contains(`Forth`);
   });
+
+  it(`
+  GIVEN two ToDo items
+  WHEN click on the 2nd of them
+  SHOULD add its ID to the list of selected IDs
+  `, () => {
+    mountComponent({
+      todos: [
+        {
+          id: 5,
+          name: `Fifth`,
+        },
+        {
+          id: 6,
+          name: `Sixth`,
+        },
+      ],
+    });
+
+    cy.get(`[data-cy="todo-item"]`)
+      .contains(`Sixth`)
+      .within(() => {
+        cy.get(`[data-cy="todo-checkbox"]`)
+          .click();
+      });
+
+    cy.get(`@toDoListState`).should((toDoListState) => {
+      expect(toDoListState.selectedToDoIds).to.deep.eq([6]);
+    });
+  });
 });
 
 function mountComponent({
