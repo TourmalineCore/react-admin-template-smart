@@ -12,7 +12,7 @@ window.__ENV__ = {
 declare global {
   namespace Cypress {
     interface Chainable {
-      mount: typeof mount;
+      mount: typeof mount,
     }
   }
 }

@@ -1,4 +1,4 @@
 type ErrorBoundaryOptionTypes = {
-  customError?: string;
-  canRetry?: boolean;
+  customError?: string,
+  canRetry?: boolean,
 };

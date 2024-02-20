@@ -1,8 +1,8 @@
 import { makeAutoObservable } from "mobx";
 
 type ToDo = {
-  id: number;
-  name: string;
+  id: number,
+  name: string,
 };
 
 export class ToDoListState {
@@ -19,7 +19,7 @@ export class ToDoListState {
   initialize({
     todos,
   }: {
-    todos: ToDo[];
+    todos: ToDo[],
   }) {
     this._todos = todos;
   }
@@ -39,7 +39,7 @@ export class ToDoListState {
   toggleToDoIdSelection({
     toDoId,
   }: {
-    toDoId: number;
+    toDoId: number,
   }) {
     const indexOfToDoIdAmongSelected = this._selectedToDoIds.indexOf(toDoId);
 
