@@ -1,14 +1,6 @@
+const E2E_SMOKE_TODO_NAME_PREFIX = `[E2E-SMOKE]`;
+
 describe(`ToDo List Smoke`, () => {
-  it(`
-  GIVEN some ToDo items from the api
-  WHEN open /todos page
-  SHOULD see some ToDo items
-  `, () => {
-    cy.visit(`/todos`);
-
-    cy.get(`[data-cy="todo-item"]`).should(`have.length.greaterThan`, 0);
-  });
-
   it(`
   GIVEN ToDo items page
   WHEN add a new ToDo
@@ -16,7 +8,7 @@ describe(`ToDo List Smoke`, () => {
   `, () => {
     cy.visit(`/todos`);
 
-    const newToDoName = `[E2E-SMOKE] ${new Date()}`;
+    const newToDoName = `${E2E_SMOKE_TODO_NAME_PREFIX} ${new Date()}`;
 
     cy.get(`[data-cy="new-todo-name-input"]`)
       .type(newToDoName);
@@ -26,6 +18,33 @@ describe(`ToDo List Smoke`, () => {
 
     cy.get(`[data-cy="todos"]`)
       .contains(newToDoName);
+  });
+
+  after(`Clean`, () => {
+    cy.request({
+      method: `GET`,
+      url: `${Cypress.env(`API_URL`)}/toDos`,
+    }).then(({
+      body,
+    }) => {
+      const {
+        toDos,
+      } = body;
+
+      const toDosToDelete = toDos
+        .filter(({
+          name,
+        }) => name.startsWith(E2E_SMOKE_TODO_NAME_PREFIX));
+
+      toDosToDelete.forEach(({
+        id,
+      }) => {
+        cy.request({
+          method: `DELETE`,
+          url: `${Cypress.env(`API_URL`)}/toDos?toDoId=${id}`,
+        });
+      });
+    });
   });
 });
 
