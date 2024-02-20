@@ -29,4 +29,12 @@ export class ToDoListState {
   get selectedToDoIds() {
     return this._selectedToDoIds;
   }
+
+  toggleToDoIdSelection({
+    toDoId,
+  }: {
+    toDoId: number;
+  }) {
+    this._selectedToDoIds.push(toDoId);
+  }
 }
