@@ -44,11 +44,21 @@ const ToDoListContainer = observer(() => {
         type="button"
         data-cy="delete-selected-todos-button"
         disabled={toDoListState.selectedToDoIds.length === 0}
+        onClick={onDeleteSelectedToDos}
       >
         Delete
       </button>
     </>
   );
+
+  async function onDeleteSelectedToDos() {
+    await api.post(
+      `/todos/complete`,
+      {
+        toDoIds: toDoListState.selectedToDoIds,
+      },
+    );
+  }
 });
 
 export {
