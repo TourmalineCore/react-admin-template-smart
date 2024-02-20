@@ -62,5 +62,11 @@ describe(`ToDoListState`, () => {
     });
 
     expect(toDoListState.selectedToDoIds).to.deep.eq([]);
+
+    toDoListState.toggleToDoIdSelection({
+      toDoId: 2,
+    });
+
+    expect(toDoListState.selectedToDoIds).to.deep.eq([2]);
   });
 });
