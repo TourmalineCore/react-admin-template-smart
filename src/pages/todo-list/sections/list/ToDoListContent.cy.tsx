@@ -74,10 +74,7 @@ describe(`ToDoListContent`, () => {
 
     cy.get(`[data-cy="todo-item"]`)
       .contains(`Sixth`)
-      .within(() => {
-        cy.get(`[data-cy="todo-checkbox"]`)
-          .click();
-      });
+      .click();
 
     cy.get(`@toDoListState`).should((toDoListState) => {
       expect(toDoListState.selectedToDoIds).to.deep.eq([6]);
