@@ -14,17 +14,17 @@ const ToDoListContainer = observer(() => {
     async function loadTodos() {
       const {
         data: {
-          todos,
+          toDos,
         },
       } = await api.get<{
-        todos: {
+        toDos: {
           id: number;
           name: string;
         }[];
-      }>(`/todos`);
+      }>(`/toDos`);
 
       toDoListState.initialize({
-        todos,
+        todos: toDos,
       });
     }
 
@@ -53,7 +53,7 @@ const ToDoListContainer = observer(() => {
 
   async function onDeleteSelectedToDos() {
     await api.post(
-      `/todos/complete`,
+      `/toDos/complete`,
       {
         toDoIds: toDoListState.selectedToDoIds,
       },
