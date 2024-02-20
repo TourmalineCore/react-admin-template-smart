@@ -68,5 +68,17 @@ describe(`ToDoListState`, () => {
     });
 
     expect(toDoListState.selectedToDoIds).to.deep.eq([2]);
+
+    toDoListState.toggleToDoIdSelection({
+      toDoId: 3,
+    });
+
+    expect(toDoListState.selectedToDoIds).to.deep.eq([2, 3]);
+
+    toDoListState.toggleToDoIdSelection({
+      toDoId: 1,
+    });
+
+    expect(toDoListState.selectedToDoIds).to.deep.eq([2, 3, 1]);
   });
 });
