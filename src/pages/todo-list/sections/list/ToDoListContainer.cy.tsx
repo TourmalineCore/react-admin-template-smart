@@ -6,11 +6,7 @@ import { ToDoListState } from "./state/ToDoListState";
 import { ToDoListStateContext } from "./state/ToDoListStateContext";
 
 describe(`ToDoListContainer`, () => {
-  it(`
-  GIVEN Two ToDo items from network
-  WHEN render the component
-  SHOULD see them
-  `, () => {
+  beforeEach(() => {
     cy.intercept(
       `GET`,
       `${API_ROOT}/todos`,
@@ -27,7 +23,13 @@ describe(`ToDoListContainer`, () => {
         ],
       },
     );
+  });
 
+  it(`
+  GIVEN Two ToDo items from network
+  WHEN render the component
+  SHOULD see them
+  `, () => {
     mountComponent();
 
     cy.contains(`Deux`);
@@ -38,23 +40,6 @@ describe(`ToDoListContainer`, () => {
   WHEN render the component and there is nothing selected
   SHOULD see disabled Delete button
   `, () => {
-    cy.intercept(
-      `GET`,
-      `${API_ROOT}/todos`,
-      {
-        todos: [
-          {
-            id: 1,
-            name: `Un`,
-          },
-          {
-            id: 2,
-            name: `Deux`,
-          },
-        ],
-      },
-    );
-
     mountComponent();
 
     cy.get(`[data-cy=delete-selected-todos-button]`)
