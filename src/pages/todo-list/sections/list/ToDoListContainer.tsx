@@ -3,6 +3,7 @@ import { observer } from "mobx-react-lite";
 import { ToDoListStateContext } from "./state/ToDoListStateContext";
 import { api } from "../../../../common/utils/HttpClient";
 import { ToDoListContent } from "./ToDoListContent";
+import { DeleteToDosButton } from "./components/DeleteToDosButton";
 
 const ToDoListContainer = observer(() => {
   const toDoListState = useContext(ToDoListStateContext);
@@ -31,14 +32,9 @@ const ToDoListContainer = observer(() => {
   return (
     <>
       <ToDoListContent />
-      <button
-        type="button"
-        data-cy="delete-selected-todos-button"
-        disabled={toDoListState.selectedToDoIds.length === 0}
-        onClick={onDeleteSelectedToDos}
-      >
-        Delete
-      </button>
+      <DeleteToDosButton
+        onDeleteClick={onDeleteSelectedToDos}
+      />
     </>
   );
 

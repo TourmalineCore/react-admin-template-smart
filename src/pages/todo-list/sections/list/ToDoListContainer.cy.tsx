@@ -11,7 +11,7 @@ describe(`ToDoListContainer`, () => {
       `GET`,
       `${API_ROOT}/toDos`,
       {
-        todos: [
+        toDos: [
           {
             id: 1,
             name: `Un`,
@@ -33,31 +33,6 @@ describe(`ToDoListContainer`, () => {
     mountComponent();
 
     cy.contains(`Deux`);
-  });
-
-  it(`
-  GIVEN Two ToDo items from network
-  WHEN render the component and there is nothing selected
-  SHOULD see disabled Delete button
-  `, () => {
-    mountComponent();
-
-    cy.get(`[data-cy=delete-selected-todos-button]`)
-      .should(`be.disabled`);
-  });
-
-  it(`
-  GIVEN Two ToDo items from network
-  WHEN select the first one
-  SHOULD see enabled Delete button
-  `, () => {
-    mountComponent();
-
-    cy.contains(`Un`)
-      .click();
-
-    cy.get(`[data-cy=delete-selected-todos-button]`)
-      .should(`not.be.disabled`);
   });
 
   it(`
