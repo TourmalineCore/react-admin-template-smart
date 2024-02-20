@@ -45,6 +45,20 @@ describe(`ToDoListContainer`, () => {
     cy.get(`[data-cy=delete-selected-todos-button]`)
       .should(`be.disabled`);
   });
+
+  it(`
+  GIVEN Two ToDo items from network
+  WHEN select the first one
+  SHOULD see enabled Delete button
+  `, () => {
+    mountComponent();
+
+    cy.contains(`Un`)
+      .click();
+
+    cy.get(`[data-cy=delete-selected-todos-button]`)
+      .should(`not.be.disabled`);
+  });
 });
 
 function mountComponent() {

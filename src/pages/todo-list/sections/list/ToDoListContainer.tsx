@@ -1,9 +1,10 @@
 import { useContext, useEffect, useRef } from "react";
+import { observer } from "mobx-react-lite";
 import { ToDoListStateContext } from "./state/ToDoListStateContext";
 import { api } from "../../../../common/utils/HttpClient";
 import { ToDoListContent } from "./ToDoListContent";
 
-const ToDoListContainer = () => {
+const ToDoListContainer = observer(() => {
   const toDoListState = useContext(ToDoListStateContext);
 
   // https://stackoverflow.com/a/74609594
@@ -37,9 +38,18 @@ const ToDoListContainer = () => {
   }, []);
 
   return (
-    <ToDoListContent />
+    <>
+      <ToDoListContent />
+      <button
+        type="button"
+        data-cy="delete-selected-todos-button"
+        disabled={toDoListState.selectedToDoIds.length === 0}
+      >
+        Delete
+      </button>
+    </>
   );
-};
+});
 
 export {
   ToDoListContainer,
