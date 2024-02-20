@@ -81,4 +81,46 @@ describe(`ToDoListState`, () => {
 
     expect(toDoListState.selectedToDoIds).to.deep.eq([2, 3, 1]);
   });
+
+  it(`
+  GIVEN two ToDo items are selected
+  WHEN unselect them on by one
+  SHOULD dissapear from the list of selected IDs
+  `, () => {
+    const toDoListState = new ToDoListState();
+
+    const todosForInitialization = [
+      {
+        id: 1,
+      },
+      {
+        id: 2,
+      },
+    ];
+
+    toDoListState.initialize({
+      todos: todosForInitialization,
+    });
+
+    toDoListState.toggleToDoIdSelection({
+      toDoId: 1,
+    });
+    toDoListState.toggleToDoIdSelection({
+      toDoId: 2,
+    });
+
+    expect(toDoListState.selectedToDoIds).to.deep.eq([1, 2]);
+
+    toDoListState.toggleToDoIdSelection({
+      toDoId: 2,
+    });
+
+    expect(toDoListState.selectedToDoIds).to.deep.eq([1]);
+
+    toDoListState.toggleToDoIdSelection({
+      toDoId: 1,
+    });
+
+    expect(toDoListState.selectedToDoIds).to.deep.eq([]);
+  });
 });
