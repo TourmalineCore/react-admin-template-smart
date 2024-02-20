@@ -10,6 +10,8 @@ export class ToDoListState {
 
   _selectedToDoIds: number[] = [];
 
+  _reloadToDosFlag: boolean = false;
+
   constructor() {
     makeAutoObservable(this);
   }
@@ -30,6 +32,10 @@ export class ToDoListState {
     return this._selectedToDoIds;
   }
 
+  get reloadToDosFlag() {
+    return this._reloadToDosFlag;
+  }
+
   toggleToDoIdSelection({
     toDoId,
   }: {
@@ -42,5 +48,9 @@ export class ToDoListState {
     } else {
       this._selectedToDoIds.splice(indexOfToDoIdAmongSelected, 1);
     }
+  }
+
+  triggerToDosReload() {
+    this._reloadToDosFlag = !this._reloadToDosFlag;
   }
 }

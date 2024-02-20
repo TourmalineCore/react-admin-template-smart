@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect } from "react";
 import { observer } from "mobx-react-lite";
 import { ToDoListStateContext } from "./state/ToDoListStateContext";
 import { api } from "../../../../common/utils/HttpClient";
@@ -6,9 +6,6 @@ import { ToDoListContent } from "./ToDoListContent";
 
 const ToDoListContainer = observer(() => {
   const toDoListState = useContext(ToDoListStateContext);
-
-  // https://stackoverflow.com/a/74609594
-  const effectRan = useRef(false);
 
   useEffect(() => {
     async function loadTodos() {
@@ -28,14 +25,8 @@ const ToDoListContainer = observer(() => {
       });
     }
 
-    if (!effectRan.current) {
-      loadTodos();
-    }
-
-    return () => {
-      effectRan.current = true;
-    };
-  }, []);
+    loadTodos();
+  }, [toDoListState.reloadToDosFlag]);
 
   return (
     <>

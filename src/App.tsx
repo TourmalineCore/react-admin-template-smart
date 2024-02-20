@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/home/HomePage';
-import { ToDoListPage } from './pages/todo-list/sections/list/ToDoListPage';
+import { ToDoListPage } from './pages/todo-list/ToDoListPage';
 
 export function App() {
   return (

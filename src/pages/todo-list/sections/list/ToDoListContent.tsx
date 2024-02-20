@@ -6,7 +6,9 @@ const ToDoListContent = observer(() => {
   const toDoListState = useContext(ToDoListStateContext);
 
   return (
-    <ul>
+    <ul
+      data-cy="todos"
+    >
       {
         toDoListState
           .todos
