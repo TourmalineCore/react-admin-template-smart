@@ -1,4 +1,4 @@
-const CORRECT_URL = Cypress.env(`APP_URL`);
+const CORRECT_URL = Cypress.env(`API_URL`);
 const ID = Cypress.env(`USER_ID`);
 
 describe(`Name`, () => {

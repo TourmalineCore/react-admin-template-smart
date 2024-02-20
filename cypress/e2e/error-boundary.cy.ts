@@ -1,5 +1,5 @@
 describe(`Error Boundary`, () => {
-  const incorrectURL = Cypress.env(`APP_URL`);
+  const incorrectURL = Cypress.env(`API_URL`);
   const id = Cypress.env(`USER_ID`);
 
   it(`shows error boundary for name section when receives 404 from server`, () => {

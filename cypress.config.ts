@@ -9,7 +9,7 @@ export default defineConfig({
     },
   },
   env: {
-    APP_URL: `https://jsonplaceholder.typicode.com`,
+    API_URL: `http://localhost:5005/toDos-api`,
     USER_ID: 5,
   },
   component: {
