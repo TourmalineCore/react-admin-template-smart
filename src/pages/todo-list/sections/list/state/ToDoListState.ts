@@ -8,6 +8,8 @@ type ToDo = {
 export class ToDoListState {
   _todos: ToDo[] = [];
 
+  _selectedToDoIds: number[] = [];
+
   constructor() {
     makeAutoObservable(this);
   }
@@ -22,5 +24,9 @@ export class ToDoListState {
 
   get todos() {
     return this._todos;
+  }
+
+  get selectedToDoIds() {
+    return this._selectedToDoIds;
   }
 }
