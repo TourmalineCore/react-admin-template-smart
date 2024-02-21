@@ -1,5 +1,5 @@
-import { ToDoListState } from "../state/ToDoListState";
-import { ToDoListStateContext } from "../state/ToDoListStateContext";
+import { ToDosState } from "../state/ToDosState";
+import { ToDosStateContext } from "../state/ToDosStateContext";
 import { DeleteToDosButton } from "./DeleteToDosButton";
 
 describe(`DeleteToDosButton`, () => {
@@ -21,8 +21,8 @@ describe(`DeleteToDosButton`, () => {
   `, () => {
     mountComponent();
 
-    cy.get<ToDoListState>(`@toDoListState`).then((toDoListState) => {
-      toDoListState.toggleToDoIdSelection({
+    cy.get<ToDosState>(`@toDosState`).then((toDosState) => {
+      toDosState.toggleToDoIdSelection({
         toDoId: 1,
       });
     });
@@ -33,10 +33,10 @@ describe(`DeleteToDosButton`, () => {
 });
 
 function mountComponent() {
-  const toDoListState = new ToDoListState();
-  cy.wrap(toDoListState).as(`toDoListState`);
+  const toDosState = new ToDosState();
+  cy.wrap(toDosState).as(`toDosState`);
 
-  toDoListState.initialize({
+  toDosState.initialize({
     todos: [
       {
         id: 1,
@@ -50,8 +50,8 @@ function mountComponent() {
   });
 
   cy.mount(
-    <ToDoListStateContext.Provider value={toDoListState}>
+    <ToDosStateContext.Provider value={toDosState}>
       <DeleteToDosButton onDeleteClick={() => {}} />
-    </ToDoListStateContext.Provider>,
+    </ToDosStateContext.Provider>,
   );
 }

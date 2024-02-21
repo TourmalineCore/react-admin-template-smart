@@ -10,13 +10,13 @@ describe(`ToDo List Smoke`, () => {
 
     const newToDoName = `${E2E_SMOKE_TODO_NAME_PREFIX} ${new Date()}`;
 
-    cy.get(`[data-cy="new-todo-name-input"]`)
+    cy.get(`[data-cy="new-to-do-name-input"]`)
       .type(newToDoName);
 
-    cy.get(`[data-cy="add-new-todo-button"]`)
+    cy.get(`[data-cy="add-new-to-do-button"]`)
       .click();
 
-    cy.get(`[data-cy="todos"]`)
+    cy.get(`[data-cy="to-dos"]`)
       .contains(newToDoName);
   });
 

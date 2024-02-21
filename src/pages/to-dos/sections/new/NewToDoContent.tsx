@@ -15,12 +15,12 @@ const NewToDoContent = observer(({
         onChange={(e) => newToDoState.changeName({
           newName: e.target.value,
         })}
-        data-cy="new-todo-name-input"
+        data-cy="new-to-do-name-input"
       />
       <button
         type="button"
         onClick={onAddClick}
-        data-cy="add-new-todo-button"
+        data-cy="add-new-to-do-button"
       >
         Add
       </button>

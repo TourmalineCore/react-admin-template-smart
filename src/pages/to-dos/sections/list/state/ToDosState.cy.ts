@@ -1,16 +1,16 @@
 // @ts-nocheck
 
-import { ToDoListState } from "./ToDoListState";
+import { ToDosState } from "./ToDosState";
 
-describe(`ToDoListState`, () => {
+describe(`ToDosState`, () => {
   it(`
   GIVEN initial state with no ToDo items
   WHEN ask for todos
   SHOULD return an empty list 
   `, () => {
-    const toDoListState = new ToDoListState();
+    const toDosState = new ToDosState();
 
-    expect(toDoListState.todos).to.deep.eq([]);
+    expect(toDosState.todos).to.deep.eq([]);
   });
 
   it(`
@@ -18,7 +18,7 @@ describe(`ToDoListState`, () => {
   WHEN initialize with two ToDo items
   SHOULD return them from todos get property
   `, () => {
-    const toDoListState = new ToDoListState();
+    const toDosState = new ToDosState();
 
     const todosForInitialization = [
       {
@@ -31,11 +31,11 @@ describe(`ToDoListState`, () => {
       },
     ];
 
-    toDoListState.initialize({
+    toDosState.initialize({
       todos: todosForInitialization,
     });
 
-    expect(toDoListState.todos).to.deep.eq(todosForInitialization);
+    expect(toDosState.todos).to.deep.eq(todosForInitialization);
   });
 
   it(`
@@ -43,7 +43,7 @@ describe(`ToDoListState`, () => {
   WHEN select them one by one
   SHOULD end up in list of selected IDs
   `, () => {
-    const toDoListState = new ToDoListState();
+    const toDosState = new ToDosState();
 
     const todosForInitialization = [
       {
@@ -57,29 +57,29 @@ describe(`ToDoListState`, () => {
       },
     ];
 
-    toDoListState.initialize({
+    toDosState.initialize({
       todos: todosForInitialization,
     });
 
-    expect(toDoListState.selectedToDoIds).to.deep.eq([]);
+    expect(toDosState.selectedToDoIds).to.deep.eq([]);
 
-    toDoListState.toggleToDoIdSelection({
+    toDosState.toggleToDoIdSelection({
       toDoId: 2,
     });
 
-    expect(toDoListState.selectedToDoIds).to.deep.eq([2]);
+    expect(toDosState.selectedToDoIds).to.deep.eq([2]);
 
-    toDoListState.toggleToDoIdSelection({
+    toDosState.toggleToDoIdSelection({
       toDoId: 3,
     });
 
-    expect(toDoListState.selectedToDoIds).to.deep.eq([2, 3]);
+    expect(toDosState.selectedToDoIds).to.deep.eq([2, 3]);
 
-    toDoListState.toggleToDoIdSelection({
+    toDosState.toggleToDoIdSelection({
       toDoId: 1,
     });
 
-    expect(toDoListState.selectedToDoIds).to.deep.eq([2, 3, 1]);
+    expect(toDosState.selectedToDoIds).to.deep.eq([2, 3, 1]);
   });
 
   it(`
@@ -87,7 +87,7 @@ describe(`ToDoListState`, () => {
   WHEN unselect them on by one
   SHOULD dissapear from the list of selected IDs
   `, () => {
-    const toDoListState = new ToDoListState();
+    const toDosState = new ToDosState();
 
     const todosForInitialization = [
       {
@@ -98,29 +98,29 @@ describe(`ToDoListState`, () => {
       },
     ];
 
-    toDoListState.initialize({
+    toDosState.initialize({
       todos: todosForInitialization,
     });
 
-    toDoListState.toggleToDoIdSelection({
+    toDosState.toggleToDoIdSelection({
       toDoId: 1,
     });
-    toDoListState.toggleToDoIdSelection({
+    toDosState.toggleToDoIdSelection({
       toDoId: 2,
     });
 
-    expect(toDoListState.selectedToDoIds).to.deep.eq([1, 2]);
+    expect(toDosState.selectedToDoIds).to.deep.eq([1, 2]);
 
-    toDoListState.toggleToDoIdSelection({
+    toDosState.toggleToDoIdSelection({
       toDoId: 2,
     });
 
-    expect(toDoListState.selectedToDoIds).to.deep.eq([1]);
+    expect(toDosState.selectedToDoIds).to.deep.eq([1]);
 
-    toDoListState.toggleToDoIdSelection({
+    toDosState.toggleToDoIdSelection({
       toDoId: 1,
     });
 
-    expect(toDoListState.selectedToDoIds).to.deep.eq([]);
+    expect(toDosState.selectedToDoIds).to.deep.eq([]);
   });
 });

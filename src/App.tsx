@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/home/HomePage';
-import { ToDoListPage } from './pages/todo-list/ToDoListPage';
+import { ToDosPage } from './pages/to-dos/ToDosPage';
 
 export function App() {
   return (
@@ -8,7 +8,7 @@ export function App() {
       <Routes>
         <Route
           path="/to-dos"
-          element={<ToDoListPage />}
+          element={<ToDosPage />}
         />
         <Route
           path="/*"

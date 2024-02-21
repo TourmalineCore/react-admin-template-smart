@@ -18,6 +18,8 @@
     "cypress:open:e2e": "cypress open --e2e --browser chrome",
     "cypress:open:component": "cypress open --component --browser chrome",
     "cypress:run": "cypress run",
+    "cypress:run:e2e": "cypress run --e2e --browser chrome",
+    "cypress:run:component": "cypress run --component --browser chrome",
     "create-config:local": "node local-config-builder local",
     "prepare": "husky install",
     "check-commit": "commitlint --edit"

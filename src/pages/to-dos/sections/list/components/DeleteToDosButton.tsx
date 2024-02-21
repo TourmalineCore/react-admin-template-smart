@@ -1,19 +1,19 @@
 import { useContext } from "react";
 import { observer } from "mobx-react-lite";
-import { ToDoListStateContext } from "../state/ToDoListStateContext";
+import { ToDosStateContext } from "../state/ToDosStateContext";
 
 const DeleteToDosButton = observer(({
   onDeleteClick,
 }: {
   onDeleteClick: () => unknown,
 }) => {
-  const toDoListState = useContext(ToDoListStateContext);
+  const toDosState = useContext(ToDosStateContext);
 
   return (
     <button
       type="button"
       data-cy="delete-selected-todos-button"
-      disabled={toDoListState.selectedToDoIds.length === 0}
+      disabled={toDosState.selectedToDoIds.length === 0}
       onClick={onDeleteClick}
     >
       Delete

@@ -1,10 +1,10 @@
 // @ts-nocheck
 
-import { ToDoListContent } from "./ToDoListContent";
-import { ToDoListState } from "./state/ToDoListState";
-import { ToDoListStateContext } from "./state/ToDoListStateContext";
+import { ToDosContent } from "./ToDosContent";
+import { ToDosState } from "./state/ToDosState";
+import { ToDosStateContext } from "./state/ToDosStateContext";
 
-describe(`ToDoListContent`, () => {
+describe(`ToDosContent`, () => {
   it(`
   GIVEN Two ToDo items
   WHEN render the component
@@ -36,9 +36,9 @@ describe(`ToDoListContent`, () => {
       todos: [],
     });
 
-    cy.get<ToDoListState>(`@toDoListState`)
-      .then((toDoListState) => {
-        toDoListState.initialize({
+    cy.get<ToDosState>(`@toDosState`)
+      .then((toDosState) => {
+        toDosState.initialize({
           todos: [
             {
               name: `Third`,
@@ -72,12 +72,12 @@ describe(`ToDoListContent`, () => {
       ],
     });
 
-    cy.get(`[data-cy="todo-item"]`)
+    cy.get(`[data-cy="to-do-item"]`)
       .contains(`Sixth`)
       .click();
 
-    cy.get(`@toDoListState`).should((toDoListState) => {
-      expect(toDoListState.selectedToDoIds).to.deep.eq([6]);
+    cy.get(`@toDosState`).should((toDosState) => {
+      expect(toDosState.selectedToDoIds).to.deep.eq([6]);
     });
   });
 });
@@ -85,16 +85,16 @@ describe(`ToDoListContent`, () => {
 function mountComponent({
   todos,
 }) {
-  const toDoListState = new ToDoListState();
-  cy.wrap(toDoListState).as(`toDoListState`);
+  const toDosState = new ToDosState();
+  cy.wrap(toDosState).as(`toDosState`);
 
-  toDoListState.initialize({
+  toDosState.initialize({
     todos,
   });
 
   cy.mount(
-    <ToDoListStateContext.Provider value={toDoListState}>
-      <ToDoListContent />
-    </ToDoListStateContext.Provider>,
+    <ToDosStateContext.Provider value={toDosState}>
+      <ToDosContent />
+    </ToDosStateContext.Provider>,
   );
 }

@@ -1,12 +1,12 @@
 import { useContext, useEffect } from "react";
 import { observer } from "mobx-react-lite";
-import { ToDoListStateContext } from "./state/ToDoListStateContext";
+import { ToDosStateContext } from "./state/ToDosStateContext";
 import { api } from "../../../../common/utils/HttpClient";
-import { ToDoListContent } from "./ToDoListContent";
+import { ToDosContent } from "./ToDosContent";
 import { DeleteToDosButton } from "./components/DeleteToDosButton";
 
-const ToDoListContainer = observer(() => {
-  const toDoListState = useContext(ToDoListStateContext);
+const ToDosContainer = observer(() => {
+  const toDosState = useContext(ToDosStateContext);
 
   useEffect(() => {
     async function loadTodos() {
@@ -21,17 +21,17 @@ const ToDoListContainer = observer(() => {
         }[],
       }>(`/to-dos`);
 
-      toDoListState.initialize({
+      toDosState.initialize({
         todos: toDos,
       });
     }
 
     loadTodos();
-  }, [toDoListState.reloadToDosFlag]);
+  }, [toDosState.reloadToDosFlag]);
 
   return (
     <>
-      <ToDoListContent />
+      <ToDosContent />
       <DeleteToDosButton
         onDeleteClick={onDeleteSelectedToDos}
       />
@@ -42,12 +42,12 @@ const ToDoListContainer = observer(() => {
     await api.post(
       `/to-dos/complete`,
       {
-        toDoIds: toDoListState.selectedToDoIds,
+        toDoIds: toDosState.selectedToDoIds,
       },
     );
   }
 });
 
 export {
-  ToDoListContainer,
+  ToDosContainer,
 };

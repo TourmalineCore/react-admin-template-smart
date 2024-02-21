@@ -1,11 +1,11 @@
 // @ts-nocheck
 
 import { API_ROOT } from "../../../../common/config";
-import { ToDoListContainer } from "./ToDoListContainer";
-import { ToDoListState } from "./state/ToDoListState";
-import { ToDoListStateContext } from "./state/ToDoListStateContext";
+import { ToDosContainer } from "./ToDosContainer";
+import { ToDosState } from "./state/ToDosState";
+import { ToDosStateContext } from "./state/ToDosStateContext";
 
-describe(`ToDoListContainer`, () => {
+describe(`ToDosContainer`, () => {
   beforeEach(() => {
     cy.intercept(
       `GET`,
@@ -66,11 +66,11 @@ describe(`ToDoListContainer`, () => {
 });
 
 function mountComponent() {
-  const toDoListState = new ToDoListState();
+  const toDosState = new ToDosState();
 
   cy.mount(
-    <ToDoListStateContext.Provider value={toDoListState}>
-      <ToDoListContainer />
-    </ToDoListStateContext.Provider>,
+    <ToDosStateContext.Provider value={toDosState}>
+      <ToDosContainer />
+    </ToDosStateContext.Provider>,
   );
 }

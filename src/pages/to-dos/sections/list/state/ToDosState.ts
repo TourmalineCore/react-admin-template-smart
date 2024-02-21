@@ -5,7 +5,7 @@ type ToDo = {
   name: string,
 };
 
-export class ToDoListState {
+export class ToDosState {
   _todos: ToDo[] = [];
 
   _selectedToDoIds: number[] = [];
