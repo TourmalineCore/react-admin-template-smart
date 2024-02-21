@@ -9,7 +9,7 @@ describe(`ToDoListContainer`, () => {
   beforeEach(() => {
     cy.intercept(
       `GET`,
-      `${API_ROOT}/toDos`,
+      `${API_ROOT}/to-dos`,
       {
         toDos: [
           {
@@ -42,7 +42,7 @@ describe(`ToDoListContainer`, () => {
   `, () => {
     cy.intercept(
       `POST`,
-      `${API_ROOT}/toDos/complete`,
+      `${API_ROOT}/to-dos/complete`,
       `true`, // because it needs this to be specified and to be string, even if it is not correct by the API contract
     ).as(`completeToDosNetworkCall`);
 

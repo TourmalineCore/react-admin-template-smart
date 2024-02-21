@@ -9,7 +9,7 @@ export default defineConfig({
     },
   },
   env: {
-    API_URL: `http://localhost:5005/toDos-api`,
+    API_URL: `http://localhost:5005/to-dos-api`,
     USER_ID: 5,
   },
   component: {

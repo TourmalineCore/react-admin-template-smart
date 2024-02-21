@@ -8,9 +8,9 @@ export const useGet = <Type>({
   url,
   config,
 }: {
-  queryKey: string[];
-  url: string;
-  config?: AxiosRequestConfig<Type>;
+  queryKey: string[],
+  url: string,
+  config?: AxiosRequestConfig<Type>,
 }) => {
   const handler = useErrorHandler();
 

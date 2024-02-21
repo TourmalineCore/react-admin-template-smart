@@ -7,7 +7,7 @@ export function App() {
     <BrowserRouter>
       <Routes>
         <Route
-          path="/todos"
+          path="/to-dos"
           element={<ToDoListPage />}
         />
         <Route

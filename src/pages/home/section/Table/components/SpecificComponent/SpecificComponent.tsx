@@ -6,7 +6,7 @@ import { useGet } from '../../../../../../common/hooks/useGet';
 function SpecificComponent({
   index,
 }: {
-  index: number;
+  index: number,
 }) {
   const {
     isLoading,

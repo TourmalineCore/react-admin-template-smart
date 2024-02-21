@@ -14,7 +14,7 @@ export class NewToDoState {
   changeName({
     newName,
   }: {
-    newName: string;
+    newName: string,
   }) {
     this._name = newName;
   }

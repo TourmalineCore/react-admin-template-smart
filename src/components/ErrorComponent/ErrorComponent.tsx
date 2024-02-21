@@ -5,9 +5,9 @@ function ErrorComponent({
   resetErrorBoundary,
   option = {},
 }: {
-  error: AxiosError | Error;
-  resetErrorBoundary: (...args: Array<unknown>) => void;
-  option?: ErrorBoundaryOptionTypes;
+  error: AxiosError | Error,
+  resetErrorBoundary: (...args: Array<unknown>) => void,
+  option?: ErrorBoundaryOptionTypes,
 }) {
   return (
     <div

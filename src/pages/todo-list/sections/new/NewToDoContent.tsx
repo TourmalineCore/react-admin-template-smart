@@ -5,7 +5,7 @@ import { NewToDoStateContext } from "./state/NewToDoStateContext";
 const NewToDoContent = observer(({
   onAddClick,
 }: {
-  onAddClick: () => unknown;
+  onAddClick: () => unknown,
 }) => {
   const newToDoState = useContext(NewToDoStateContext);
 

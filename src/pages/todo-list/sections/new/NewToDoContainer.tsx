@@ -7,7 +7,7 @@ import { NewToDoContent } from "./NewToDoContent";
 const NewToDoContainer = observer(({
   onNewToDoAdded,
 }: {
-  onNewToDoAdded: () => unknown;
+  onNewToDoAdded: () => unknown,
 }) => {
   const newToDoState = useContext(NewToDoStateContext);
 
@@ -19,7 +19,7 @@ const NewToDoContainer = observer(({
 
   async function onAdd() {
     await api.post(
-      `/toDos`,
+      `/to-dos`,
       {
         name: newToDoState.name,
       },

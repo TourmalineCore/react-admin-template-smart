@@ -5,7 +5,7 @@ import { ToDoListStateContext } from "../state/ToDoListStateContext";
 const DeleteToDosButton = observer(({
   onDeleteClick,
 }: {
-  onDeleteClick: () => unknown;
+  onDeleteClick: () => unknown,
 }) => {
   const toDoListState = useContext(ToDoListStateContext);
 

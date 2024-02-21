@@ -6,7 +6,7 @@ import '../../src/index.scss';
 // @ts-ignore
 window.__ENV__ = {
   ENV_KEY: `Cypress`,
-  API_ROOT: `http://test.com/toDos-api`,
+  API_ROOT: `http://test.com/to-dos-api`,
 };
 
 declare global {

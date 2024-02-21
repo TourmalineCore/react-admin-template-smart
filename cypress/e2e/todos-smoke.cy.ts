@@ -6,7 +6,7 @@ describe(`ToDo List Smoke`, () => {
   WHEN add a new ToDo
   SHOULD see it in the list
   `, () => {
-    cy.visit(`/todos`);
+    cy.visit(`/to-dos`);
 
     const newToDoName = `${E2E_SMOKE_TODO_NAME_PREFIX} ${new Date()}`;
 
@@ -23,7 +23,7 @@ describe(`ToDo List Smoke`, () => {
   after(`Clean`, () => {
     cy.request({
       method: `GET`,
-      url: `${Cypress.env(`API_URL`)}/toDos`,
+      url: `${Cypress.env(`API_URL`)}/to-dos`,
     }).then(({
       body,
     }) => {
@@ -41,7 +41,7 @@ describe(`ToDo List Smoke`, () => {
       }) => {
         cy.request({
           method: `DELETE`,
-          url: `${Cypress.env(`API_URL`)}/toDos?toDoId=${id}`,
+          url: `${Cypress.env(`API_URL`)}/to-dos?toDoId=${id}`,
         });
       });
     });

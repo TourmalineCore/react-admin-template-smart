@@ -1,2 +1,2 @@
 ENV_KEY:local
-API_ROOT:http://localhost:5005/toDos-api
+API_ROOT:http://localhost:5005/to-dos-api

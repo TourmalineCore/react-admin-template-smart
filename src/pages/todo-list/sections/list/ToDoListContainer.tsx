@@ -16,10 +16,10 @@ const ToDoListContainer = observer(() => {
         },
       } = await api.get<{
         toDos: {
-          id: number;
-          name: string;
-        }[];
-      }>(`/toDos`);
+          id: number,
+          name: string,
+        }[],
+      }>(`/to-dos`);
 
       toDoListState.initialize({
         todos: toDos,
@@ -40,7 +40,7 @@ const ToDoListContainer = observer(() => {
 
   async function onDeleteSelectedToDos() {
     await api.post(
-      `/toDos/complete`,
+      `/to-dos/complete`,
       {
         toDoIds: toDoListState.selectedToDoIds,
       },
