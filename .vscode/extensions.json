@@ -2,6 +2,7 @@
   "recommendations": [
     "dbaeumer.vscode-eslint",
     "stylelint.vscode-stylelint",
-    "k--kato.intellij-idea-keybindings"
+    "k--kato.intellij-idea-keybindings",
+    "dsbasko.create-component-helper"
   ]
 }
